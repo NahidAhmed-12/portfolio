@@ -11,7 +11,7 @@ function TechStack() {
                 {/* unDraw বা Storyset থেকে Tech Stack সম্পর্কিত একটি ছবি যুক্ত করুন */}
                 <img 
                     className='text-center w-full max-w-md md:max-w-full' 
-                    src="/Images/tech-stack-illustration.svg" // নতুন ছবির পাথ
+                    src="/assets/tech-stack-illustration.png" // নতুন ছবির পাথ
                     alt="Technology stack illustration" 
                 />
             </div>

@@ -42,7 +42,11 @@ function Navbar() {
           : 'bg-gray-900/50 backdrop-blur-xl'           // একদম উপরে থাকলে (মাঝারি ব্লার)
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 
+        এখানে মূল পরিবর্তনটি করা হয়েছে। 
+        'px-4' কে 'px-2' করা হয়েছে যাতে মোবাইল স্ক্রিনে দুই পাশের গ্যাপ কমে যায়।
+      */}
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo and Portfolio Name */}
           <div className="flex-shrink-0">

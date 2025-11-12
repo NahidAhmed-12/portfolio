@@ -22,7 +22,7 @@ function FeaturedProject() {
 
             <div className='md:w-1/2 mb-10 flex justify-center'>
                 {/* এখানে আপনার প্রজেক্টের একটি মকআপ বা স্ক্রিনশট ব্যবহার করুন */}
-                <img className='text-center w-[90%] md:w-full' src="/Images/project-mockup.png" alt="Featured project mockup" />
+                <img className='text-center w-[90%] md:w-full' src="./programing.svg" alt="Featured project mockup" />
             </div>
         </section>
     </>

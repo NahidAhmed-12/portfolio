@@ -12,6 +12,12 @@
 
 
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+
 
 .NavLinkStyle{
   @apply flex flex-col justify-center items-center   md:text-xl  font-[500] hover:text-cyan-500 duration-300

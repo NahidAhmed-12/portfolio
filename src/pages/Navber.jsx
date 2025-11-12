@@ -49,7 +49,7 @@ function Navbar() {
             <Link to="/" className="flex items-center gap-3">
               <img className="h-12 w-12 rounded-full object-cover" src="/logo2.jpg" alt="Logo" />
               <span className="text-white text-2xl font-bold transition-colors duration-300 hover:text-cyan-400">
-                MyPortfolio
+               Creative Hub
               </span>
             </Link>
           </div>

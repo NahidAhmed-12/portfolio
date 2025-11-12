@@ -7,7 +7,7 @@ function TechStack() {
         <section className='flex items-center flex-col md:flex-row md:gap-12 lg:gap-16 px-5 sm:px-10 md:px-16 lg:px-24 py-16 md:py-20'>
             
             {/* ইমেজ / SVG (বাম পাশ) */}
-            <div className='w-full md:w-1/2 mb-10 md:mb-0 flex justify-center'>
+            <div className='w-full md:w-1-2 mb-10 md:mb-0 flex justify-center'>
                 <img 
                     className='text-center w-full max-w-md md:max-w-full' 
                     src="/assets/tech-stack-illustration.png" // আপনার ছবির পাথ
@@ -27,10 +27,10 @@ function TechStack() {
                  {/* === নতুন ডিজাইনের বাটন === */}
                  <a 
                     href="#contact" // এখানে আপনার Contact সেকশনের আইডি লিংক করতে পারেন
-                    className="inline-block px-8 py-4 text-lg font-semibold text-white transition-all duration-300 ease-in-out transform bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full shadow-lg shadow-purple-500/40 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/60 focus:outline-none focus:ring-4 focus:ring-purple-300"
+                    className="inline-flex items-center px-6 py-3 font-semibold bg-transparent border-2 border-gray-500 rounded-full text-white transition-colors duration-300 hover:bg-gray-700 hover:border-gray-700"
                  >
+                    <i className="fa-solid fa-code mr-3"></i>
                     Let's Build Together
-                    <i className="fa-solid fa-rocket ml-3"></i>
                  </a>
                </div>
             </div>

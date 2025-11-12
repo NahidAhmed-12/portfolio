@@ -100,7 +100,7 @@ function Hiro() {
 
                     <div className='px-5 flex-shrink-0'>
                         <div className='flex items-center justify-center'>
-                            <div className={`bg-[url("/my image.jpg")] h-72 w-72 md:h-96 md:w-96 rounded-full bg-no-repeat bg-center bg-cover border-4 border-blue-400 shadow-2xl`}>
+                            <div className={`bg-[url("/myimg.jpg")] h-72 w-72 md:h-96 md:w-96 rounded-full bg-no-repeat bg-center bg-cover border-4 border-blue-400 shadow-2xl`}>
                             </div>
                          </div>
                     </div>

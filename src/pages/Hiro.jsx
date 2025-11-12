@@ -3,10 +3,9 @@ import { TypeAnimation } from 'react-type-animation';
 
 function Hiro() {
     return (
-        // === পরিবর্তন ১ ===
-        // এখানে সেকশনটিকে পুরো স্ক্রিনের উচ্চতা দেওয়া হয়েছে এবং কন্টেন্টকে মাঝখানে রাখা হয়েছে।
-        // এর ফলে ভেতরের কন্টেন্ট বড় হলেও সেকশনের সীমানা পরিবর্তন হবে না।
-        <section className='min-h-screen flex items-center px-4'>
+        // এখানে md:py-28 কে পরিবর্তন করে md:pt-20 md:pb-28 করা হয়েছে
+        // যাতে শুধু ডেস্কটপ স্ক্রিনে উপরের প্যাডিং কমে যায়।
+        <section className='py-20 md:pt-20 md:pb-28 px-4'>
             {/* 
               মূল কন্টেইনার:
               - মোবাইলে কলাম আকারে (ছবি উপরে, টেক্সট নিচে) থাকবে।
@@ -16,15 +15,16 @@ function Hiro() {
             <div className='container mx-auto flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8'>
 
                 {/* === টেক্সট কন্টেন্ট সেকশন === */}
+                {/* 
+                  - 'order-2' দিয়ে মোবাইলে এটিকে ছবির নিচে দেখানো হয়েছে।
+                  - 'md:order-1' দিয়ে ডেস্কটপে এটিকে প্রথমে (বামে) দেখানো হয়েছে।
+                */}
                 <div className='flex-1 order-2 md:order-1'>
                     <div className='text-center md:text-start flex flex-col items-center md:items-start gap-3 md:gap-4'>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Hi, I'm <span className="text-blue-400">Nahid</span></h2>
 
-                        {/* === পরিবর্তন ২ ===
-                          এখান থেকে নির্দিষ্ট উচ্চতার ক্লাস (h-16, md:h-20, lg:h-24) সরিয়ে দেওয়া হয়েছে।
-                          এখন এটি স্বাভাবিকভাবে বড়-ছোট হবে।
-                        */}
-                        <div className="text-lg md:text-2xl lg:text-3xl font-[500] mt-2">
+                        {/* টাইপিং অ্যানিমেশন (মোবাইলের জন্য উচ্চতা নির্দিষ্ট করা হয়েছে) */}
+                        <div className="text-lg md:text-2xl lg:text-3xl font-[500] mt-2 h-16 md:h-auto">
                             <TypeAnimation
                                 sequence={[
                                     'A Frontend Web Developer',
@@ -95,8 +95,17 @@ function Hiro() {
                 </div>
 
                 {/* === ইমেজ সেকশন === */}
-                {/* এখানে কোনো পরিবর্তন করা হয়নি */}
+                {/* 
+                  - 'order-1' দিয়ে মোবাইলে এটিকে প্রথমে (উপরে) দেখানো হয়েছে।
+                  - 'md:order-2' দিয়ে ডেস্কটপে এটিকে দ্বিতীয়তে (ডানে) দেখানো হয়েছে।
+                */}
                 <div className='flex-1 flex justify-center items-center order-1 md:order-2 -mt-20 md:mt-0'>
+                    {/* 
+                      রেসপন্সিভ ইমেজ সাইজ:
+                      - ছোট স্ক্রিনে: h-64 w-64
+                      - মাঝারি স্ক্রিনে: md:h-80 md:w-80
+                      - বড় স্ক্রিনে: lg:h-96 lg:w-96
+                    */}
                     <div className={`bg-[url("/myimg.webp")] h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96 rounded-full bg-no-repeat bg-center bg-cover border-4 border-blue-400 shadow-2xl transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50`}>
                     </div>
                 </div>

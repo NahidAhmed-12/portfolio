@@ -47,7 +47,7 @@ function Navber() { // আপনার কম্পোনেন্টের ন�
           {/* Logo and Portfolio Name */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center gap-3">
-              <img className="h-12 w-12 rounded-full object-cover" src="/nevlogo.jpegg" alt="Logo" />
+              <img className="h-12 w-12 rounded-full object-cover" src="/nevlogo.jpeg" alt="Logo" />
               <span className="text-white text-2xl font-bold transition-colors duration-300 hover:text-cyan-400">
                Creative Hub
               </span>

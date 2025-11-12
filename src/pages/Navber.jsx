@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
@@ -23,14 +22,6 @@ function Navbar() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-=======
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { FiMenu, FiX } from 'react-icons/fi'; // আইকনের জন্য react-icons লাইব্রেরি ব্যবহার করা হয়েছে
-
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
->>>>>>> 266cce439cd0d42fb40973c0acb3331bf6af4077
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -44,7 +35,6 @@ function Navbar() {
   ];
 
   return (
-<<<<<<< HEAD
     <nav
       className={`sticky top-0 z-50 transition-all duration-300 ease-in-out ${
         scrolled
@@ -52,9 +42,6 @@ function Navbar() {
           : 'bg-gray-900/50 backdrop-blur-xl'           // একদম উপরে থাকলে (মাঝারি ব্লার)
       }`}
     >
-=======
-    <nav className="bg-gray-900 bg-opacity-50 backdrop-blur-lg shadow-lg sticky top-0 z-50">
->>>>>>> 266cce439cd0d42fb40973c0acb3331bf6af4077
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo and Portfolio Name */}
@@ -62,11 +49,7 @@ function Navbar() {
             <Link to="/" className="flex items-center gap-3">
               <img className="h-12 w-12 rounded-full object-cover" src="/logo2.jpg" alt="Logo" />
               <span className="text-white text-2xl font-bold transition-colors duration-300 hover:text-cyan-400">
-<<<<<<< HEAD
-               Creative Hub
-=======
                 MyPortfolio
->>>>>>> 266cce439cd0d42fb40973c0acb3331bf6af4077
               </span>
             </Link>
           </div>
@@ -119,11 +102,7 @@ function Navbar() {
             <NavLink
               key={index}
               to={link.path}
-<<<<<<< HEAD
               onClick={() => setIsOpen(false)}
-=======
-              onClick={() => setIsOpen(false)} // লিঙ্কে ক্লিক করলে মেনু বন্ধ হয়ে যাবে
->>>>>>> 266cce439cd0d42fb40973c0acb3331bf6af4077
               className={({ isActive }) =>
                 `text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${
                   isActive ? 'bg-gray-900 text-cyan-400' : ''
@@ -139,8 +118,4 @@ function Navbar() {
   );
 }
 
-<<<<<<< HEAD
 export default Navbar;
-=======
-export default Navbar;
->>>>>>> 266cce439cd0d42fb40973c0acb3331bf6af4077

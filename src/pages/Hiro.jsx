@@ -59,7 +59,7 @@ function Hiro() {
 
                     <div className='flex-1'>
                         <div className='text-center md:text-start px-5 flex flex-col gap-3 md:gap-4' >
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Hi, I'm <span className="text-blue-400">Auly ullah</span></h2>
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Hi, I'm <span className="text-blue-400">Nahid</span></h2>
 
                             {/* টাইপিং অ্যানিমেশন এখানে দেখানো হবে */}
                             <p className="text-lg md:text-2xl lg:text-3xl font-[500] mt-2 max-w-xl h-16 md:h-auto">

@@ -3,17 +3,17 @@ import React from 'react'
 function Offer() {
     const services = [
         {
-            Imge: "/Icons/responsive-design.svg", // Replace with your icon path
+            Imge: "/Icons/Group 1.svg", // আপনার আগের আইকন পাথ
             Heading: "Responsive Web Design",
             Des: "Crafting websites that provide an optimal viewing and interaction experience across a wide range of devices, from desktops to mobile phones."
         },
         {
-            Imge: "/Icons/interactive-ui.svg", // Replace with your icon path
+            Imge: "/Icons/Group 23.svg", // আপনার আগের আইকন পাথ
             Heading: "Interactive UI Development",
             Des: "Building dynamic, engaging, and user-friendly interfaces using modern JavaScript frameworks like React to bring designs to life."
         },
         {
-            Imge: "/Icons/performance.svg", // Replace with your icon path
+            Imge: "/Icons/analytics.png", // আপনার আগের আইকন পাথ
             Heading: "Performance Optimization",
             Des: "Optimizing web applications for maximum speed and efficiency to ensure a smooth, fast, and seamless user experience."
         }

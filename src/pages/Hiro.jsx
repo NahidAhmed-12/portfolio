@@ -4,7 +4,8 @@ import { TypeAnimation } from 'react-type-animation';
 function Hiro() {
     return (
         <>
-            <section className='flex justify-center items-center flex-col-reverse md:flex-row py-28 md:py-32'>
+            {/* এখানে py-28 কে py-20 এবং md:py-32 কে md:py-24 করা হয়েছে */}
+            <section className='flex justify-center items-center flex-col-reverse md:flex-row py-20 md:py-24'>
                 <div className='flex justify-center items-center md:items-start gap-12 md:justify-between flex-col-reverse md:flex-row w-full md:px-24'>
 
                     <div className='flex-1'>

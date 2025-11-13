@@ -3,9 +3,8 @@ import { TypeAnimation } from 'react-type-animation';
 
 function Hiro() {
     return (
-        // এখানে md:py-28 কে পরিবর্তন করে md:pt-20 md:pb-28 করা হয়েছে
-        // যাতে শুধু ডেস্কটপ স্ক্রিনে উপরের প্যাডিং কমে যায়।
-        <section className='py-20 md:pt-20 md:pb-28 px-4'>
+        // পরিবর্তন: সেকশনের উচ্চতা স্ক্রিনের সমান করা হয়েছে এবং কন্টেন্টকে ভার্টিক্যালি সেন্টারে আনা হয়েছে।
+        <section className='min-h-screen flex items-center px-4'>
             {/* 
               মূল কন্টেইনার:
               - মোবাইলে কলাম আকারে (ছবি উপরে, টেক্সট নিচে) থাকবে।
@@ -15,24 +14,18 @@ function Hiro() {
             <div className='container mx-auto flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8'>
 
                 {/* === টেক্সট কন্টেন্ট সেকশন === */}
-                {/* 
-                  - 'order-2' দিয়ে মোবাইলে এটিকে ছবির নিচে দেখানো হয়েছে।
-                  - 'md:order-1' দিয়ে ডেস্কটপে এটিকে প্রথমে (বামে) দেখানো হয়েছে।
-                */}
                 <div className='flex-1 order-2 md:order-1'>
-                    <div className='text-center md:text-start flex flex-col items-center md:items-start gap-3 md:gap-4'>
+                    {/* পরিবর্তন: টেক্সট যেন বেশি ছড়িয়ে না যায়, সেজন্য max-w-xl যোগ করা হয়েছে। */}
+                    <div className='text-center md:text-start flex flex-col items-center md:items-start gap-3 md:gap-4 max-w-xl'>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Hi, I'm <span className="text-blue-400">Nahid</span></h2>
 
-                        {/* টাইপিং অ্যানিমেশন (মোবাইলের জন্য উচ্চতা নির্দিষ্ট করা হয়েছে) */}
+                        {/* টাইপিং অ্যানিমেশন */}
                         <div className="text-lg md:text-2xl lg:text-3xl font-[500] mt-2 h-16 md:h-auto">
                             <TypeAnimation
                                 sequence={[
-                                    'A Frontend Web Developer',
-                                    1000,
-                                    'Specializing in React & JavaScript',
-                                    1000,
-                                    'Building Modern Web Applications',
-                                    1000,
+                                    'A Frontend Web Developer', 1000,
+                                    'Specializing in React & JavaScript', 1000,
+                                    'Building Modern Web Applications', 1000,
                                 ]}
                                 wrapper="span"
                                 speed={50}
@@ -94,38 +87,23 @@ function Hiro() {
                     </div>
                 </div>
 
-                {/* === ইমেজ সেকশন (PNG ইমেজ পপ-আউট অ্যানিমেশনসহ) === */}
-                <div className='flex-1 flex justify-center items-center order-1 md:order-2 -mt-20 md:mt-0'>
-                    {/*
-                      মূল কন্টেইনার:
-                      - 'group' হোভার ইফেক্টের জন্য।
-                      - 'relative' ভিতরের ইমেজটিকে পজিশন করার জন্য।
-                    */}
+                {/* === ইমেজ সেকশন (চূড়ান্ত ডিজাইন) === */}
+                <div className='flex-1 flex justify-center items-center order-1 md:order-2'>
                     <div className="group relative h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96">
                         
-                        {/* PNG ইমেজ (মানুষ) */}
-                        {/* 
-                          - `absolute` দিয়ে এটিকে কন্টেইনারের সাপেক্ষে পজিশন করা হয়েছে।
-                          - `bottom-0` এটিকে নিচে বসিয়েছে।
-                          - `z-10` এটিকে গোলাকার ফ্রেমের উপরে রাখবে।
-                          - `group-hover:scale-110` হোভারে ছবিটিকে বড় করবে।
-                          - `group-hover:-translate-y-4` হোভারে ছবিটিকে সামান্য উপরে তুলবে।
-                        */}
+                        {/* পরিবর্তন: PNG ইমেজটিকে ডিফল্টভাবে h-[90%] দেওয়া হয়েছে এবং হোভার ইফেক্ট বাড়ানো হয়েছে */}
                         <img 
                             src="/person.png" // <-- এখানে আপনার PNG ছবির পাথ দিন
                             alt="Nahid's Picture" 
-                            className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-auto object-contain transition-transform duration-300 ease-in-out z-10 group-hover:scale-110 group-hover:-translate-y-4"
+                            className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[90%] w-auto object-contain transition-transform duration-300 ease-in-out z-10 group-hover:scale-115 group-hover:-translate-y-8"
                         />
 
-                        {/* গোলাকার গ্রেডিয়েন্ট ফ্রেম (এটি ছবির পিছনে থাকবে) */}
+                        {/* গোলাকার গ্রেডিয়েন্ট ফ্রেম (ছবির পিছনে) */}
                         <div className="h-full w-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 p-1 shadow-2xl transition-all duration-300 ease-in-out group-hover:shadow-cyan-500/50">
-                            {/* ভিতরের সার্কেল (ওয়েবসাইটের ব্যাকগ্রাউন্ড কালার) */}
                             <div className="h-full w-full rounded-full bg-gray-900"></div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </section>
     );

@@ -3,14 +3,15 @@ import { TypeAnimation } from 'react-type-animation';
 
 function Hiro() {
     return (
-        // সমাধান ২: সেকশনকে পুরো স্ক্রিন জুড়ে দেখানোর জন্য এবং কন্টেন্টকে ভার্টিক্যালি সেন্টারে আনার জন্য কোড।
-        <section className='min-h-screen flex items-center px-4'>
+        // সমাধান ২: Navbar এর উচ্চতা বাদ দিয়ে সেকশনের উচ্চতা সেট করা হয়েছে।
+        // অনুগ্রহ করে 80px এর জায়গায় আপনার আসল Navbar এর উচ্চতা (height) দিন।
+        <section className='min-h-[calc(100vh-80px)] flex items-center px-4'>
             <div className='container mx-auto flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8'>
 
                 {/* === টেক্সট কন্টেন্ট সেকশন === */}
-                {/* সমাধান ১: টেক্সট ব্লকের অ্যালাইনমেন্ট ঠিক করা হয়েছে, এখন এটি আর বেশি ডানে যাবে না। */}
-                <div className='flex-1 order-2 md:order-1'>
-                    <div className='text-center md:text-start flex flex-col items-center md:items-start gap-3 md:gap-4'>
+                {/* সমাধান ১: টেক্সট ব্লকটিকে ডানদিকে সরানোর জন্য flex এবং justify-end ব্যবহার করা হয়েছে। */}
+                <div className='flex-1 order-2 md:order-1 flex flex-col items-center md:items-end'>
+                    <div className='text-center md:text-start flex flex-col items-center md:items-start gap-3 md:gap-4 max-w-xl'>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Hi, I'm <span className="text-blue-400">Nahid</span></h2>
 
                         <div className="text-lg md:text-2xl lg:text-3xl font-[500] mt-2 h-16 md:h-auto">
@@ -78,7 +79,7 @@ function Hiro() {
                     </div>
                 </div>
 
-                {/* === ইমেজ সেকশন (এটি এখন ঠিক আছে) === */}
+                {/* === ইমেজ সেকশন (এটি ঠিক আছে) === */}
                 <div className='flex-1 flex justify-center items-center order-1 md:order-2'>
                     <div className="group relative h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96">
                         

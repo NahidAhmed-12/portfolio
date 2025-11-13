@@ -47,7 +47,7 @@ function Navber() {
           {/* Logo and Portfolio Name */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center gap-3">
-              <img className="h-9 w-9  object-cover" src="/public/Images/Exclude.svg" alt="Logo" />
+              <img className="h-9 w-9  object-cover" src="/Images/Exclude.svg" alt="Logo" />
               {/* ফন্ট এবং সাইজ আপডেট করা হয়েছে */}
               <span className="text-white text-xl sm:text-2xl font-bold transition-colors duration-300 hover:text-cyan-400 font-poppins">
                Creative Hub

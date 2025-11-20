@@ -78,7 +78,7 @@ function Footer() {
                             </svg>
                         </SocialIcon>
                     </div>
-                    <p className="mt-8 sm:mt-0 text-base text-gray-400">&copy; {new Date().getFullYear()} Wern Finance. All Rights Reserved.</p>
+                    <p className="mt-8 sm:mt-0 text-base text-gray-400">&copy; {new Date().getFullYear()} Creative Hub. All Rights Reserved.</p>
                 </div>
             </div>
         </footer>

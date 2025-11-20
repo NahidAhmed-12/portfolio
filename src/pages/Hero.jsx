@@ -36,35 +36,35 @@ function Hero() {
 
                             {/* === নতুন, পরিশীলিত সোশ্যাল আইকন সেকশন === */}
                             <div className='flex gap-4 justify-center md:justify-start pb-4'>
-                                <a href="https://www.facebook.com/m.aul.ulla.2024" target="_blank" rel="noopener noreferrer"
+                                <a href="#" target="_blank" rel="noopener noreferrer"
                                    className='h-12 w-12 rounded-full bg-neutral-800 border-2 border-neutral-700 flex justify-center items-center text-neutral-400
                                               transform transition-all duration-300 ease-in-out
                                               hover:text-cyan-500 hover:border-cyan-500
                                               hover:scale-110 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/30'>
                                     <i className="fa-brands fa-facebook-f text-xl"></i>
                                 </a>
-                                <a href="https://www.instagram.com/auly_ullah?igsh=MTFocm13ZHBlOWQ4ag==" target="_blank" rel="noopener noreferrer"
+                                <a href="#" target="_blank" rel="noopener noreferrer"
                                    className='h-12 w-12 rounded-full bg-neutral-800 border-2 border-neutral-700 flex justify-center items-center text-neutral-400
                                               transform transition-all duration-300 ease-in-out
                                               hover:text-cyan-500 hover:border-cyan-500
                                               hover:scale-110 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/30'>
                                     <i className="fa-brands fa-instagram text-xl"></i>
                                 </a>
-                                <a href="https://www.youtube.com/@CodedByAuly" target="_blank" rel="noopener noreferrer"
+                                <a href="#" target="_blank" rel="noopener noreferrer"
                                    className='h-12 w-12 rounded-full bg-neutral-800 border-2 border-neutral-700 flex justify-center items-center text-neutral-400
                                               transform transition-all duration-300 ease-in-out
                                               hover:text-cyan-500 hover:border-cyan-500
                                               hover:scale-110 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/30'>
                                     <i className="fa-brands fa-youtube text-xl"></i>
                                 </a>
-                                <a href="https://www.linkedin.com/in/auly-ullah-244604352?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer"
+                                <a href="#" target="_blank" rel="noopener noreferrer"
                                    className='h-12 w-12 rounded-full bg-neutral-800 border-2 border-neutral-700 flex justify-center items-center text-neutral-400
                                               transform transition-all duration-300 ease-in-out
                                               hover:text-cyan-500 hover:border-cyan-500
                                               hover:scale-110 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/30'>
                                     <i className="fa-brands fa-linkedin-in text-xl"></i>
                                 </a>
-                               <a href="https://www.tiktok.com/@codedbyauly?_t=ZS-8vLC83UDfLs&_r=1" target="_blank" rel="noopener noreferrer"
+                               <a href="#" target="_blank" rel="noopener noreferrer"
                                    className='h-12 w-12 rounded-full bg-neutral-800 border-2 border-neutral-700 flex justify-center items-center text-neutral-400
                                               transform transition-all duration-300 ease-in-out
                                               hover:text-cyan-500 hover:border-cyan-500

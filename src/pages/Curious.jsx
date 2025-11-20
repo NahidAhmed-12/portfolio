@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FeaturedProject() {
+function Curious() {
   return (
     <>
         {/* মূল সেকশন কন্টেইনার */}
@@ -41,4 +41,4 @@ function FeaturedProject() {
   )
 }
 
-export default FeaturedProject;
+export default Curious;

@@ -69,7 +69,7 @@ function About() {
               <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1">
                 Download CV
               </button>
-              <a href="#contact" className="px-8 py-3 border-2 border-blue-500 text-blue-400 font-semibold rounded-lg hover:bg-slate-800 transition-all duration-300">
+              <a href="/contact" className="px-8 py-3 border-2 border-blue-500 text-blue-400 font-semibold rounded-lg hover:bg-slate-800 transition-all duration-300">
                 Contact Me
               </a>
             </div>

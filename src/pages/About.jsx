@@ -2,11 +2,11 @@ import React from 'react'
 
 function About() {
   return (
-    // পরিবর্তন: 
-    // আগে 'py-20' ছিল যা উপরে-নিচে অনেক জায়গা নিচ্ছিল।
-    // এখন 'pt-10' (উপরে কম জায়গা) এবং 'pb-20' (নিচে ঠিকঠাক জায়গা) করা হয়েছে।
-    // যদি আরও উপরে উঠাতে চান, 'pt-10' এর বদলে 'pt-5' ব্যবহার করতে পারেন।
-    <section id="about" className="pt-10 pb-20 md:pt-16 bg-transparent text-white">
+    // পরিবর্তন:
+    // ১. 'pt-0' এবং 'md:pt-0' দেওয়া হয়েছে যাতে উপরে কোনো ফাঁকা জায়গা না থাকে।
+    // ২. '-mt-10' (Negative Margin) যোগ করা হয়েছে। এটি সেকশনটিকে জোর করে আরও উপরে টেনে তুলবে।
+    // নোট: যদি বেশি উপরে উঠে যায়, তবে '-mt-10' কমিয়ে '-mt-5' করতে পারেন।
+    <section id="about" className="pt-0 md:pt-0 pb-20 -mt-10 bg-transparent text-white">
       <div className="container mx-auto px-6 md:px-12">
         
         {/* Section Header */}

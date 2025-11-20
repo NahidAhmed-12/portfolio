@@ -27,7 +27,7 @@ function About() {
             {/* ring-slate-200 থেকে ring-slate-700 করা হয়েছে যাতে বর্ডারটি ডার্ক থিমে ভালো লাগে */}
             <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-slate-700">
               <img 
-                src="/person.wedp" 
+                src="/person.webp" 
                 alt="Nahid" 
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
               />

@@ -2,15 +2,13 @@ import React from 'react'
 
 function About() {
   return (
-    // পরিবর্তন: 
-    // আগে 'pt-10' ছিল, এখন 'pt-0' করা হয়েছে যাতে সেকশনটি একদম উপরে উঠে আসে।
-    // 'pb-20' রাখা হয়েছে যাতে নিচের দিকে ফাঁকা জায়গা ঠিক থাকে।
-    <section id="about" className="pt-0 pb-20 bg-transparent text-white">
+    // পরিবর্তন ১: 'bg-transparent' এর বদলে 'bg-slate-900' দেওয়া হয়েছে যাতে সাদা লেখা স্পষ্ট দেখা যায়।
+    // পরিবর্তন ২: 'py-10' ব্যবহার করা হয়েছে। এটি খুব বেশি গ্যাপ দেবে না, আবার একদম উপরেও লেগে থাকবে না।
+    <section id="about" className="py-10 bg-slate-900 text-white">
       <div className="container mx-auto px-6 md:px-12">
         
         {/* Section Header */}
-        {/* mt-10 যোগ করা হয়েছে যাতে একদম লেগে না গিয়ে সামান্য একটু গ্যাপ থাকে, প্রয়োজনে এটিও কমিয়ে mt-5 করতে পারেন */}
-        <div className="text-center mb-12 md:mb-16 mt-10">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-wide">
             About <span className="text-blue-500">Me</span>
           </h2>

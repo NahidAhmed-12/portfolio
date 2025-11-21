@@ -102,27 +102,25 @@ function Message() {
             className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in-up`}
           >
             {/* 
-               === মেসেজ বাবল ডিজাইন আপডেট ===
-               ১. max-w-[75%] করা হয়েছে যাতে বেশি চওড়া না দেখায়।
-               ২. rounded-[20px] এবং rounded-br/bl-[2px] ব্যবহার করে 'Message Tail' ইফেক্ট দেওয়া হয়েছে।
-               ৩. প্যাডিং কমিয়ে px-4 py-2.5 করা হয়েছে (স্লিম লুক)।
+               === পরিবর্তন ===
+               ১. 'min-w-[120px]' যোগ করা হয়েছে। 
+                  এর ফলে মেসেজ ছোট হলেও বাবলটি অন্তত 120px জায়গা নিবে।
+               ২. বাকি ডিজাইন আগের মতোই স্লিম এবং শার্প আছে।
             */}
             <div
-              className={`relative max-w-[75%] px-4 py-2.5 text-[15px] shadow-sm whitespace-pre-wrap leading-relaxed border backdrop-blur-md
+              className={`relative max-w-[75%] min-w-[120px] px-4 py-2.5 text-[15px] shadow-sm whitespace-pre-wrap leading-relaxed border backdrop-blur-md flex flex-col
               ${
                 msg.sender === 'user'
-                  // ইউজারের মেসেজ: ভাইব্রেন্ট গ্রেডিয়েন্ট, ডানদিকের কোণা শার্প
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-[20px] rounded-br-[2px] border-transparent shadow-cyan-500/20'
-                  // নাহিদের মেসেজ: ডার্ক গ্রে, বামদিকের কোণা শার্প
                   : 'bg-neutral-800 text-gray-200 rounded-[20px] rounded-bl-[2px] border-neutral-700 shadow-black/20'
               }`}
             >
+              {/* মেসেজ টেক্সট */}
               <p>{msg.text}</p>
               
-              {/* টাইমস্ট্যাম্প ডিজাইন আপডেট */}
-              <div className={`text-[10px] flex items-center justify-end gap-1 mt-1 opacity-70`}>
+              {/* টাইমস্ট্যাম্প - এটি এখন নিচে ডানদিকে ফিক্সড থাকবে */}
+              <div className={`text-[10px] flex items-center justify-end gap-1 mt-auto pt-1 opacity-70 w-full`}>
                 {msg.time}
-                {/* ইউজারের মেসেজে ডাবল টিক আইকন */}
                 {msg.sender === 'user' && (
                   <i className="fa-solid fa-check-double text-[10px]"></i>
                 )}
@@ -148,7 +146,6 @@ function Message() {
         onSubmit={handleSend} 
         className="flex-none p-3 bg-neutral-900/70 backdrop-blur-md border-t border-white/10 flex items-end gap-2 w-full z-20"
       >
-        {/* ইনপুট ফিল্ড আরও রাউন্ডেড এবং স্লিম করা হয়েছে */}
         <div className="flex-1 bg-neutral-800/50 rounded-full border border-neutral-700 transition-all duration-300 focus-within:border-cyan-500/50 focus-within:bg-neutral-900/80 focus-within:shadow-[0_0_15px_rgba(6,182,212,0.15)]">
             <textarea
                 ref={textareaRef}

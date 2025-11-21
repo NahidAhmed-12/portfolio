@@ -29,7 +29,6 @@ function Workflow() {
     ];
 
     return (
-        // পরিবর্তন: এখানে bg-neutral-950 সরিয়ে bg-transparent দেওয়া হয়েছে
         <section className="py-16 md:py-24 px-5 md:px-24 bg-transparent w-full" id="workflow">
             <div className="flex flex-col items-center mb-16">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">
@@ -50,7 +49,6 @@ function Workflow() {
                         )}
 
                         {/* কার্ড বডি */}
-                        {/* পরিবর্তন: এখানে bg-neutral-900/50 এর সাথে backdrop-blur-sm যোগ করা হয়েছে গ্লাস ইফেক্টের জন্য */}
                         <div className="bg-neutral-900/40 backdrop-blur-sm border border-neutral-800 p-6 rounded-2xl h-full
                                         transform transition-all duration-300 ease-in-out
                                         hover:-translate-y-2 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20">
@@ -60,7 +58,9 @@ function Workflow() {
                                 <div className="h-14 w-14 rounded-full bg-neutral-800/80 border border-neutral-700 flex items-center justify-center text-2xl text-cyan-500 shadow-lg group-hover:scale-110 transition-transform duration-300 group-hover:bg-cyan-500/10 group-hover:border-cyan-500">
                                     <i className={step.icon}></i>
                                 </div>
-                                <span className="text-4xl font-bold text-neutral-800 group-hover:text-neutral-700 transition-colors select-none">
+                                
+                                {/* পরিবর্তন: নম্বরের কালার গাঢ় ধূসর (neutral-800) থেকে হালকা (text-gray-600) করা হয়েছে */}
+                                <span className="text-5xl font-bold text-gray-600/40 group-hover:text-cyan-500/30 transition-colors select-none">
                                     {step.id}
                                 </span>
                             </div>

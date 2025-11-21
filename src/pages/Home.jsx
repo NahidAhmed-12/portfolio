@@ -7,6 +7,7 @@ import DebitCard from './Curious';
 import PerfectCard from './TechStack';
 import UserComment from './UserComment';
 import Footer from './Footer';
+import Footer from './Projects';
 import { IoStar } from "react-icons/io5";
 
 function HomePage() {
@@ -21,6 +22,7 @@ function HomePage() {
         <DebitCard />
         <PerfectCard />
         <UserComment />
+        <Projects />
         <Footer />
       </div>
 

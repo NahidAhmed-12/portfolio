@@ -14,10 +14,10 @@ function Projects() {
         },
         {
             id: 2,
-            title: "Portfolio Template",
+            title: "Crypto vision",
             description: "A clean, responsive, and dark-themed personal portfolio website template for developers.",
-            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60",
-            techStack: ["Next.js", "Framer Motion", "CSS"],
+            image: "public/Images/crypto-10.vercel.app_(Nest Hub Max) (1).png",
+            techStack: ["React.js", "API", "Tailwind "],
             liveLink: "#",
             codeLink: "#"
         },
@@ -25,8 +25,8 @@ function Projects() {
             id: 3,
             title: "Weather Dashboard",
             description: "Real-time weather forecasting app fetching data from OpenWeatherMap API with location support.",
-            image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=500&auto=format&fit=crop&q=60",
-            techStack: ["JavaScript", "API", "Bootstrap"],
+            image: "public/Images/weathers-10.vercel.app_(Nest Hub Max) (4) (1).png",
+            techStack: ["JavaScript", "API", "Tailwind"],
             liveLink: "#",
             codeLink: "#"
         }

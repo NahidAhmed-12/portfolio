@@ -1,8 +1,10 @@
- import React from 'react';
+import React from 'react';
 
 function About() {
   return (
-    <section id="about" className="py-12 md:py-20 relative overflow-hidden">
+    // পরিবর্তন: 'py-12' বা আগের ভ্যালুর বদলে 'pt-0' দেওয়া হয়েছে যাতে উপরে কোনো ফাঁকা জায়গা না থাকে।
+    // 'pb-12 md:pb-20' রাখা হয়েছে যাতে নিচের দিকে স্পেস ঠিক থাকে।
+    <section id="about" className="pt-0 pb-12 md:pt-0 md:pb-20 relative overflow-hidden">
       
       {/* --- Background Glow (Skills সেকশনের সাথে মিল রেখে) --- */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -z-10"></div>
@@ -26,9 +28,12 @@ function About() {
           
           {/* Left Side: Image with Gradient Border */}
           <div className="w-full md:w-5/12 flex justify-center">
-            {/* ইমেজের বাইরের গ্রেডিয়েন্ট বর্ডার কন্টেইনার */}
-            <div className="p-1 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 shadow-2xl shadow-cyan-500/20">
-              <div className="bg-neutral-900 rounded-xl overflow-hidden">
+            {/* 
+               সংশোধন: আগের 'p-1 bg-gradient...' সরিয়ে সরাসরি 'border-2 border-cyan-500' দেওয়া হয়েছে।
+               এর ফলে ব্যাকগ্রাউন্ড এখন সম্পূর্ণ transparent থাকবে এবং নীল দেখাবে না। 
+            */}
+            <div className="rounded-2xl border-2 border-cyan-500 shadow-2xl shadow-cyan-500/20">
+              <div className="bg-transparent rounded-xl overflow-hidden">
                 <img 
                   src="/person.webp" 
                   alt="Nahid" 

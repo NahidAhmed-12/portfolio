@@ -7,7 +7,7 @@ import DebitCard from './Curious';
 import PerfectCard from './TechStack';
 import UserComment from './UserComment';
 import Footer from './Footer';
-import Footer from './Projects';
+import Projects from './Projects'; // <--- এখানে নাম ঠিক করা হয়েছে
 import { IoStar } from "react-icons/io5";
 
 function HomePage() {

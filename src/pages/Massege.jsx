@@ -17,6 +17,7 @@ function Message() {
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
 
+  // অটো স্ক্রল ফাংশন
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -25,6 +26,7 @@ function Message() {
     scrollToBottom();
   }, [messages, isTyping]);
 
+  // টেক্সট এরিয়া অটো হাইট
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
@@ -47,10 +49,6 @@ function Message() {
     setInput('');
     setIsTyping(true);
     
-    if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
-    }
-
     setTimeout(() => {
       const replyMessage = {
         id: Date.now() + 1,
@@ -64,30 +62,30 @@ function Message() {
   };
 
   return (
-    // --- MAIN CONTAINER ---
-    // ১. 'fixed top-[80px]' এর কারণে এটি নেভবারের ঠিক নিচে ফিক্সড থাকবে।
-    // ২. 'h-[calc(100vh-80px)]' এর কারণে এটি স্ক্রিনের বাকি অংশ জুড়ে থাকবে।
-    // ৩. 'bg-transparent' দেওয়া হয়েছে যাতে App.jsx এর ব্যাকগ্রাউন্ড দেখা যায়।
-    <div className="fixed top-[80px] left-0 w-full h-[calc(100vh-80px)] flex flex-col font-sans bg-transparent relative overflow-hidden z-0">
+    // ============ MAIN CONTAINER FIX ============
+    // ১. 'fixed' এবং 'inset-x-0' (left-0 right-0) দেওয়া হয়েছে।
+    // ২. 'top-[80px]' মানে নেভবারের নিচে শুরু হবে।
+    // ৩. 'bottom-0' মানে একদম নিচ পর্যন্ত বিস্তৃত থাকবে (হাইট ফিক্সড)।
+    // ৪. 'overflow-hidden' দেওয়া হয়েছে যাতে পুরো পেজ স্ক্রল না হয়, শুধু ভিতরের অংশ স্ক্রল হয়।
+    <div className="fixed top-[80px] left-0 right-0 bottom-0 flex flex-col font-sans bg-neutral-900/95 backdrop-blur-sm z-50 overflow-hidden">
       
-      {/* --- Floating Background Effects (ভাসমান আভা) --- */}
-      {/* animate-pulse ক্লাস যোগ করা হয়েছে যাতে এগুলো হালকা জ্বলে আর নেভে (Floating effect) */}
+      {/* --- Floating Background Effects (App.jsx এর উপরে ভাসমান ভাব) --- */}
       <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl pointer-events-none animate-pulse delay-1000"></div>
 
-      {/* --- HEADER (FIXED) --- */}
-      {/* flex-shrink-0 ব্যবহার করায় এটি স্ক্রল করার সময় নড়বে না বা ছোট হবে না */}
-      <div className="px-5 py-3 flex items-center gap-4 border-b border-white/10 bg-neutral-900/60 backdrop-blur-md flex-shrink-0 shadow-sm z-20">
+      {/* ============ HEADER (FIXED) ============ */}
+      {/* 'flex-none' বা 'h-16' দিয়ে হাইট ফিক্সড করা হয়েছে যাতে এটি কখনোই ছোট-বড় না হয় */}
+      <div className="flex-none h-[70px] px-5 flex items-center gap-4 border-b border-white/10 bg-neutral-900/80 backdrop-blur-md shadow-sm z-20 w-full">
         
         <div className="relative group cursor-pointer">
           <div className="p-[2px] rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600">
             <img 
               src={headerUserImage} 
               alt="Nahid" 
-              className="w-11 h-11 rounded-full object-cover border-2 border-neutral-900"
+              className="w-10 h-10 rounded-full object-cover border-2 border-neutral-900"
             />
           </div>
-          <span className="absolute bottom-0.5 right-0.5 w-3.5 h-3.5 bg-emerald-500 border-2 border-neutral-900 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse"></span>
+          <span className="absolute bottom-0.5 right-0.5 w-3 h-3 bg-emerald-500 border-2 border-neutral-900 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse"></span>
         </div>
         
         <div className="flex-1">
@@ -98,9 +96,11 @@ function Message() {
         </div>
       </div>
 
-      {/* --- CHAT BODY (SCROLLABLE) --- */}
-      {/* flex-1 এবং overflow-y-auto এর কারণে শুধুমাত্র এই অংশটুকু স্ক্রল হবে, হেডার স্থির থাকবে */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-6 scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-transparent z-10">
+      {/* ============ CHAT BODY (SCROLLABLE) ============ */}
+      {/* ১. 'flex-1' মানে বাকি সব জায়গা এটি নিয়ে নেবে।
+          ২. 'overflow-y-auto' মানে শুধু এখানেই স্ক্রলবার আসবে।
+          ৩. 'overscroll-contain' মানে স্ক্রল শেষ হলে বডি স্ক্রল হবে না। */}
+      <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 space-y-6 scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-transparent z-10 overscroll-contain">
         
         <div className="flex justify-center mb-4">
             <span className="text-[10px] font-semibold text-gray-400 bg-neutral-800/60 backdrop-blur-sm border border-white/5 px-3 py-1 rounded-full shadow-sm">
@@ -111,14 +111,14 @@ function Message() {
         {messages.map((msg) => (
           <div
             key={msg.id}
-            className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in-up transition-all duration-300`}
+            className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in-up`}
           >
             <div
               className={`relative max-w-[85%] md:max-w-[65%] px-5 py-3.5 rounded-2xl text-[15px] shadow-lg whitespace-pre-wrap leading-relaxed border backdrop-blur-sm
               ${
                 msg.sender === 'user'
                   ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-br-none border-transparent shadow-cyan-500/10'
-                  : 'bg-neutral-800/80 text-gray-200 rounded-bl-none border-neutral-700 shadow-black/20'
+                  : 'bg-neutral-800/90 text-gray-200 rounded-bl-none border-neutral-700 shadow-black/20'
               }`}
             >
               <p>{msg.text}</p>
@@ -138,13 +138,15 @@ function Message() {
             </div>
           </div>
         )}
-        <div ref={messagesEndRef} />
+        {/* স্ক্রল এর শেষ পয়েন্ট */}
+        <div ref={messagesEndRef} className="pb-2" />
       </div>
 
-      {/* --- INPUT AREA (FIXED BOTTOM) --- */}
+      {/* ============ INPUT AREA (FIXED BOTTOM) ============ */}
+      {/* 'flex-none' দেওয়া হয়েছে যাতে এটি স্ক্রল না হয় */}
       <form 
         onSubmit={handleSend} 
-        className="p-4 bg-neutral-900/80 backdrop-blur-md border-t border-white/10 flex items-end gap-3 flex-shrink-0 w-full z-20"
+        className="flex-none p-4 bg-neutral-900/80 backdrop-blur-md border-t border-white/10 flex items-end gap-3 w-full z-20"
       >
         <div className="flex-1 bg-neutral-800/50 rounded-[24px] border border-neutral-700 transition-all duration-300 focus-within:border-cyan-500/50 focus-within:bg-neutral-800 focus-within:shadow-[0_0_15px_rgba(6,182,212,0.15)]">
             <textarea

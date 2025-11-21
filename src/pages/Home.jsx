@@ -7,6 +7,7 @@ import DebitCard from './Curious';
 import PerfectCard from './TechStack';
 import UserComment from './UserComment';
 import Footer from './Footer';
+import Workflow from './Workflow';
 import Projects from './Projects'; // <--- এখানে নাম ঠিক করা হয়েছে
 import { IoStar } from "react-icons/io5";
 
@@ -23,6 +24,7 @@ function HomePage() {
         <PerfectCard />
         <UserComment />
         <Projects />
+        <Workflow />
         <Footer />
       </div>
 

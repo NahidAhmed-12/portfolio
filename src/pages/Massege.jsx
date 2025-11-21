@@ -17,7 +17,6 @@ function Message() {
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
 
-  // অটো স্ক্রল ফাংশন
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -26,7 +25,6 @@ function Message() {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  // টেক্সট এরিয়া অটো হাইট
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
@@ -62,20 +60,20 @@ function Message() {
   };
 
   return (
-    // ============ MAIN CONTAINER FIX ============
-    // ১. 'fixed' এবং 'inset-x-0' (left-0 right-0) দেওয়া হয়েছে।
-    // ২. 'top-[80px]' মানে নেভবারের নিচে শুরু হবে।
-    // ৩. 'bottom-0' মানে একদম নিচ পর্যন্ত বিস্তৃত থাকবে (হাইট ফিক্সড)।
-    // ৪. 'overflow-hidden' দেওয়া হয়েছে যাতে পুরো পেজ স্ক্রল না হয়, শুধু ভিতরের অংশ স্ক্রল হয়।
-    <div className="fixed top-[80px] left-0 right-0 bottom-0 flex flex-col font-sans bg-neutral-900/95 backdrop-blur-sm z-50 overflow-hidden">
+    // ============ MAIN CONTAINER ============
+    // পরিবর্তন: 'bg-neutral-900/95' সরিয়ে 'bg-transparent' দেওয়া হয়েছে।
+    // এখন আপনার App.jsx এর ব্যাকগ্রাউন্ড দেখা যাবে।
+    <div className="fixed top-[80px] left-0 right-0 bottom-0 flex flex-col font-sans bg-transparent z-50 overflow-hidden">
       
-      {/* --- Floating Background Effects (App.jsx এর উপরে ভাসমান ভাব) --- */}
-      <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl pointer-events-none animate-pulse delay-1000"></div>
+      {/* --- Floating Background Effects (Optional) --- */}
+      {/* আপনি চাইলে এই ভাসমান বাবল গুলো রাখতে পারেন, এগুলো ব্যাকগ্রাউন্ডের ওপর সুন্দর এফেক্ট ফেলে। 
+          যদি একদম ক্লিয়ার চান তবে এই দুটি div সরিয়ে দিতে পারেন। */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none animate-pulse delay-1000"></div>
 
       {/* ============ HEADER (FIXED) ============ */}
-      {/* 'flex-none' বা 'h-16' দিয়ে হাইট ফিক্সড করা হয়েছে যাতে এটি কখনোই ছোট-বড় না হয় */}
-      <div className="flex-none h-[70px] px-5 flex items-center gap-4 border-b border-white/10 bg-neutral-900/80 backdrop-blur-md shadow-sm z-20 w-full">
+      {/* হেডারটি একটু ব্লার রাখা হয়েছে যাতে মেসেজ স্ক্রল করার সময় লেখার ওপর দিয়ে গেলে বাজে না দেখায় */}
+      <div className="flex-none h-[70px] px-5 flex items-center gap-4 border-b border-white/10 bg-neutral-900/70 backdrop-blur-md shadow-sm z-20 w-full">
         
         <div className="relative group cursor-pointer">
           <div className="p-[2px] rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600">
@@ -97,13 +95,10 @@ function Message() {
       </div>
 
       {/* ============ CHAT BODY (SCROLLABLE) ============ */}
-      {/* ১. 'flex-1' মানে বাকি সব জায়গা এটি নিয়ে নেবে।
-          ২. 'overflow-y-auto' মানে শুধু এখানেই স্ক্রলবার আসবে।
-          ৩. 'overscroll-contain' মানে স্ক্রল শেষ হলে বডি স্ক্রল হবে না। */}
       <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 space-y-6 scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-transparent z-10 overscroll-contain">
         
         <div className="flex justify-center mb-4">
-            <span className="text-[10px] font-semibold text-gray-400 bg-neutral-800/60 backdrop-blur-sm border border-white/5 px-3 py-1 rounded-full shadow-sm">
+            <span className="text-[10px] font-semibold text-gray-300 bg-neutral-900/40 backdrop-blur-sm border border-white/10 px-3 py-1 rounded-full shadow-sm">
               Today
             </span>
         </div>
@@ -113,16 +108,17 @@ function Message() {
             key={msg.id}
             className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in-up`}
           >
+            {/* মেসেজ বাবলের ব্যাকগ্রাউন্ড একটু গাড় করা হয়েছে যাতে transparent ব্যাকগ্রাউন্ডের ওপর লেখা পড়া যায় */}
             <div
-              className={`relative max-w-[85%] md:max-w-[65%] px-5 py-3.5 rounded-2xl text-[15px] shadow-lg whitespace-pre-wrap leading-relaxed border backdrop-blur-sm
+              className={`relative max-w-[85%] md:max-w-[65%] px-5 py-3.5 rounded-2xl text-[15px] shadow-lg whitespace-pre-wrap leading-relaxed border backdrop-blur-md
               ${
                 msg.sender === 'user'
                   ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-br-none border-transparent shadow-cyan-500/10'
-                  : 'bg-neutral-800/90 text-gray-200 rounded-bl-none border-neutral-700 shadow-black/20'
+                  : 'bg-neutral-900/80 text-gray-200 rounded-bl-none border-neutral-700 shadow-black/20'
               }`}
             >
               <p>{msg.text}</p>
-              <span className={`text-[10px] block text-right mt-2 ${msg.sender === 'user' ? 'text-blue-100' : 'text-gray-500'}`}>
+              <span className={`text-[10px] block text-right mt-2 ${msg.sender === 'user' ? 'text-blue-100' : 'text-gray-400'}`}>
                 {msg.time}
               </span>
             </div>
@@ -131,31 +127,29 @@ function Message() {
 
         {isTyping && (
           <div className="flex justify-start animate-fade-in">
-             <div className="bg-neutral-800/80 backdrop-blur-sm border border-neutral-700 px-4 py-4 rounded-2xl rounded-bl-none flex items-center gap-1.5 h-12 shadow-md">
+             <div className="bg-neutral-900/80 backdrop-blur-sm border border-neutral-700 px-4 py-4 rounded-2xl rounded-bl-none flex items-center gap-1.5 h-12 shadow-md">
               <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce"></span>
               <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce delay-100"></span>
               <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce delay-200"></span>
             </div>
           </div>
         )}
-        {/* স্ক্রল এর শেষ পয়েন্ট */}
         <div ref={messagesEndRef} className="pb-2" />
       </div>
 
       {/* ============ INPUT AREA (FIXED BOTTOM) ============ */}
-      {/* 'flex-none' দেওয়া হয়েছে যাতে এটি স্ক্রল না হয় */}
       <form 
         onSubmit={handleSend} 
-        className="flex-none p-4 bg-neutral-900/80 backdrop-blur-md border-t border-white/10 flex items-end gap-3 w-full z-20"
+        className="flex-none p-4 bg-neutral-900/70 backdrop-blur-md border-t border-white/10 flex items-end gap-3 w-full z-20"
       >
-        <div className="flex-1 bg-neutral-800/50 rounded-[24px] border border-neutral-700 transition-all duration-300 focus-within:border-cyan-500/50 focus-within:bg-neutral-800 focus-within:shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+        <div className="flex-1 bg-neutral-800/50 rounded-[24px] border border-neutral-700 transition-all duration-300 focus-within:border-cyan-500/50 focus-within:bg-neutral-900/80 focus-within:shadow-[0_0_15px_rgba(6,182,212,0.15)]">
             <textarea
                 ref={textareaRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type a message..."
                 rows={1}
-                className="w-full bg-transparent text-white placeholder-gray-500 px-5 py-3.5 rounded-[24px] focus:outline-none text-[15px] resize-none max-h-[120px] overflow-y-auto scrollbar-hide"
+                className="w-full bg-transparent text-white placeholder-gray-400 px-5 py-3.5 rounded-[24px] focus:outline-none text-[15px] resize-none max-h-[120px] overflow-y-auto scrollbar-hide"
                 style={{ minHeight: '50px' }}
             />
         </div>
@@ -166,7 +160,7 @@ function Message() {
           className={`p-3 rounded-full shadow-lg transition-all duration-300 transform flex items-center justify-center h-[50px] w-[50px] flex-shrink-0
             ${input.trim() 
                 ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:scale-105 active:scale-95 shadow-cyan-500/30' 
-                : 'bg-neutral-800 text-gray-600 cursor-not-allowed'
+                : 'bg-neutral-800/80 text-gray-500 cursor-not-allowed'
             }`}
         >
            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 ml-0.5">

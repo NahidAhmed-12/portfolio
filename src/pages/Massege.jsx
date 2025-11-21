@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-function Message() {
+function Massege() {
+  // প্রোফাইল ইমেজের লিংক
   const headerUserImage = "/person.webp";
 
   const [messages, setMessages] = useState([
     { 
       id: 1, 
-      text: "Hi there! 👋 I'm Nahid. How can I help you create something amazing today?", 
+      text: "Hi there! 👋 I'm Nahid, a Frontend Developer. How can I help you today?", 
       sender: 'nahid',
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
@@ -25,6 +26,7 @@ function Message() {
     scrollToBottom();
   }, [messages, isTyping]);
 
+  // টেক্সট এরিয়া অটো হাইট লজিক
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
@@ -33,7 +35,7 @@ function Message() {
   }, [input]);
 
   const handleSend = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // ফর্ম সাবমিট এবং রিলোড বন্ধ করা
     if (!input.trim()) return;
 
     const newMessage = {
@@ -47,10 +49,15 @@ function Message() {
     setInput('');
     setIsTyping(true);
     
+    // হাইট রিসেট করা
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+    }
+
     setTimeout(() => {
       const replyMessage = {
         id: Date.now() + 1,
-        text: "Thanks for reaching out! I'll get back to you shortly.",
+        text: "Thanks for reaching out! I am currently offline but I will get back to you as soon as possible.",
         sender: 'nahid',
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
@@ -59,41 +66,41 @@ function Message() {
     }, 2000);
   };
 
-  return (
-    // ============ MAIN CONTAINER ============
-    // পরিবর্তন: bg-black/30 এবং backdrop-blur-xl ব্যবহার করা হয়েছে।
-    // এটি ব্যাকগ্রাউন্ডকে আবছা (Frosted) করে দিবে, যা খুব প্রিমিয়াম দেখায়।
-    <div className="fixed top-[80px] left-0 right-0 bottom-0 flex flex-col font-sans bg-black/20 backdrop-blur-xl z-0 overflow-hidden border-t border-white/5">
-      
-      {/* --- Subtle Glow Effects (Optional) --- */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-indigo-600/20 rounded-full blur-[100px] pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-cyan-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+  // NOTE: handleKeyDown ফাংশনটি সরিয়ে দেওয়া হয়েছে যাতে Enter চাপলে নতুন লাইন তৈরি হয়।
 
-      {/* ============ HEADER ============ */}
-      <div className="flex-none h-[70px] px-6 flex items-center gap-4 border-b border-white/5 bg-white/5 backdrop-blur-md shadow-sm z-20 w-full">
-        <div className="relative">
-          <div className="p-[2px] rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+  return (
+    // পরিবর্তন: bg-[#0f172a] কে bg-transparent করা হয়েছে
+    <div className="fixed top-[80px] left-0 w-full h-[calc(100dvh-80px)] flex flex-col font-sans bg-transparent z-0">
+      
+      {/* HEADER */}
+      {/* পরিবর্তন: bg-slate-900/60 কে bg-transparent করা হয়েছে */}
+      <div className="px-5 py-3 flex items-center gap-4 border-b border-white/5 bg-transparent backdrop-blur-xl flex-shrink-0 shadow-sm z-10">
+        <div className="relative group cursor-pointer">
+          <div className="p-[2px] rounded-full bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500">
             <img 
               src={headerUserImage} 
               alt="Nahid" 
-              className="w-10 h-10 rounded-full object-cover border-2 border-[#0F172A]"
+              className="w-11 h-11 rounded-full object-cover border-2 border-slate-900"
             />
           </div>
-          <span className="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 bg-emerald-500 border-2 border-[#0F172A] rounded-full shadow-lg animate-pulse"></span>
+          <span className="absolute bottom-0.5 right-0.5 w-3 h-3 bg-emerald-500 border-2 border-slate-900 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.6)]"></span>
         </div>
+        
         <div className="flex-1">
-          <h2 className="text-white font-bold text-lg tracking-wide drop-shadow-md">Nahid</h2>
-          <p className="text-indigo-200 text-xs font-medium opacity-80">Online • Frontend Dev</p>
+          <h2 className="text-white font-bold text-[17px] leading-tight tracking-wide">Nahid</h2>
+          <p className="text-blue-200/70 text-[11px] font-medium flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Frontend Developer • Online
+          </p>
         </div>
       </div>
 
-      {/* ============ CHAT BODY ============ */}
-      <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 space-y-6 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent z-10 overscroll-contain">
+      {/* CHAT BODY */}
+      {/* পরিবর্তন: bg-gradient-to-b from-slate-900 to-[#0B1121] সরিয়ে দেওয়া হয়েছে */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-5 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent bg-transparent">
         
-        <div className="flex justify-center mb-4">
-            <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest bg-black/20 px-3 py-1 rounded-full">
-              Today
-            </span>
+        <div className="flex justify-center mb-2">
+            <span className="text-[10px] text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">Today</span>
         </div>
 
         {messages.map((msg) => (
@@ -102,67 +109,63 @@ function Message() {
             className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in-up`}
           >
             <div
-              className={`relative max-w-[80%] min-w-[120px] px-5 py-3 text-[15px] shadow-2xl flex flex-col backdrop-blur-md
-              ${
+              className={`relative max-w-[85%] md:max-w-[65%] px-5 py-3 rounded-2xl text-[15px] shadow-md border border-white/5 whitespace-pre-wrap leading-relaxed ${
                 msg.sender === 'user'
-                  // USER BUBBLE: Modern Indigo-Purple Gradient
-                  ? 'bg-gradient-to-br from-indigo-600 to-violet-600 text-white rounded-[24px] rounded-tr-[4px]'
-                  // SENDER BUBBLE: Glassy Dark Grey (Translucent)
-                  : 'bg-[#1e293b]/80 border border-white/5 text-gray-100 rounded-[24px] rounded-tl-[4px]'
+                  ? 'bg-blue-600 text-white rounded-br-none'
+                  : 'bg-slate-800 text-slate-200 rounded-bl-none'
               }`}
             >
-              <p className="leading-relaxed font-normal tracking-wide">{msg.text}</p>
-              
-              <div className={`text-[9px] flex items-center justify-end gap-1.5 mt-2 font-medium ${msg.sender === 'user' ? 'text-indigo-100' : 'text-gray-400'}`}>
+              <p>{msg.text}</p>
+              <span className={`text-[9px] block text-right mt-1.5 opacity-70`}>
                 {msg.time}
-                {msg.sender === 'user' && (
-                  <i className="fa-solid fa-check text-[9px]"></i>
-                )}
-              </div>
+              </span>
             </div>
           </div>
         ))}
 
         {isTyping && (
-          <div className="flex justify-start animate-fade-in">
-             <div className="bg-[#1e293b]/80 border border-white/5 px-4 py-3 rounded-[24px] rounded-tl-[4px] flex items-center gap-1.5 h-auto shadow-md">
-              <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce"></span>
-              <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce delay-100"></span>
-              <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce delay-200"></span>
+          <div className="flex justify-start">
+             <div className="bg-slate-800 border border-white/5 px-4 py-3 rounded-2xl rounded-bl-none flex items-center gap-1.5 h-10">
+              <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></span>
+              <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-75"></span>
+              <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-150"></span>
             </div>
           </div>
         )}
-        <div ref={messagesEndRef} className="pb-2" />
+        <div ref={messagesEndRef} />
       </div>
 
-      {/* ============ INPUT AREA ============ */}
+      {/* INPUT AREA */}
+      {/* পরিবর্তন: bg-[#0B1121]/95 কে bg-transparent করা হয়েছে */}
       <form 
         onSubmit={handleSend} 
-        className="flex-none p-4 bg-black/20 backdrop-blur-xl flex items-end gap-3 w-full z-20"
+        className="p-3 pb-4 bg-transparent backdrop-blur-md border-t border-white/5 flex items-end gap-3 flex-shrink-0 w-full"
       >
-        <div className="flex-1 bg-[#1e293b]/70 rounded-[26px] border border-white/10 transition-all duration-300 focus-within:border-indigo-500/50 focus-within:bg-[#1e293b] focus-within:shadow-[0_0_20px_rgba(99,102,241,0.15)]">
+        {/* Text Area Wrapper */}
+        <div className="flex-1 bg-slate-800/60 rounded-[24px] border border-slate-700/50 hover:border-slate-600 focus-within:border-blue-500/50 focus-within:bg-slate-800 transition-all duration-300">
             <textarea
                 ref={textareaRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Message..."
+                // onKeyDown টি রিমুভ করা হয়েছে যাতে Enter এ নতুন লাইন হয়
+                placeholder="Type a message..."
                 rows={1}
-                className="w-full bg-transparent text-white placeholder-gray-400 px-6 py-3.5 rounded-[26px] focus:outline-none text-[15px] resize-none max-h-[120px] overflow-y-auto scrollbar-hide"
-                style={{ minHeight: '52px' }}
+                className="w-full bg-transparent text-white placeholder-slate-400 px-5 py-3.5 rounded-[24px] focus:outline-none text-[15px] resize-none max-h-[120px] overflow-y-auto scrollbar-hide"
+                style={{ minHeight: '48px' }}
             />
         </div>
         
+        {/* Send Button */}
         <button
           type="submit"
           disabled={!input.trim()}
-          className={`group p-3 rounded-full shadow-xl transition-all duration-300 flex items-center justify-center h-[52px] w-[52px] flex-shrink-0 border border-white/5
+          className={`p-3 rounded-full shadow-lg transition-all duration-300 transform flex items-center justify-center h-[48px] w-[48px] flex-shrink-0
             ${input.trim() 
-                ? 'bg-indigo-600 text-white hover:bg-indigo-500 hover:scale-105 active:scale-95 shadow-indigo-500/30' 
-                : 'bg-[#1e293b] text-gray-500 cursor-not-allowed'
+                ? 'bg-blue-600 text-white hover:bg-blue-500 active:scale-95 cursor-pointer shadow-blue-900/30' 
+                : 'bg-slate-800 text-slate-600 cursor-default'
             }`}
         >
-            {/* Send Icon with simple animation */}
-           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={`w-5 h-5 ml-0.5 transition-transform duration-300 ${input.trim() ? 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5' : ''}`}>
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 ml-0.5">
                 <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
             </svg>
         </button>
@@ -172,4 +175,4 @@ function Message() {
   )
 }
 
-export default Message;
+export default Massege;

@@ -16,7 +16,7 @@ function Projects() {
             id: 2,
             title: "Crypto vision",
             description: "A clean, responsive, and dark-themed personal portfolio website template for developers.",
-            image: "public/Images/crypto-10.vercel.app_(Nest Hub Max) (1).png",
+            image: "/Images/crypto-10.vercel.app_(Nest Hub Max) (1).png",
             techStack: ["React.js", "API", "Tailwind "],
             liveLink: "https://crypto-10.vercel.app/",
             codeLink: "#"
@@ -25,7 +25,7 @@ function Projects() {
             id: 3,
             title: "Weather Dashboard",
             description: "Real-time weather forecasting app fetching data from OpenWeatherMap API with location support.",
-            image: "public/Images/weathers-10.vercel.app_(Nest Hub Max) (4) (1).png",
+            image: "/Images/weathers-10.vercel.app_(Nest Hub Max) (4) (1).png",
             techStack: ["JavaScript", "API", "Tailwind"],
             liveLink: "https://weathers-10.vercel.app/",
             codeLink: "#"

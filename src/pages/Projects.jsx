@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Projects() {
-    // আপনার প্রজেক্টের তথ্য এখানে পরিবর্তন করবেন
+    // স্টেট ডিক্লেয়ার করা হলো: শুরুতে ৩টি প্রজেক্ট দেখাবে
+    const [visibleProjects, setVisibleProjects] = useState(3);
+
+    // আপনার প্রজেক্টের তথ্য এখানে (আমি মোট ৬টি প্রজেক্ট দিয়েছি যাতে লোড করার মতো ডাটা থাকে)
     const projectList = [
         {
             id: 1,
             title: "E-Commerce Website",
             description: "A full-featured e-commerce platform with cart functionality, payment gateway integration, and user dashboard.",
-            image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=500&auto=format&fit=crop&q=60", // আপনার প্রজেক্টের ছবির লিংক দিন
+            image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=500&auto=format&fit=crop&q=60",
             techStack: ["React", "Tailwind", "Redux"],
             liveLink: "#",
             codeLink: "#"
@@ -29,11 +32,57 @@ function Projects() {
             techStack: ["JavaScript", "API", "Tailwind"],
             liveLink: "https://weathers-10.vercel.app/",
             codeLink: "#"
+        },
+        // --- নিচে নতুন ৩টি প্রজেক্ট যোগ করা হলো যা বাটনে ক্লিক করলে আসবে ---
+        {
+            id: 4,
+            title: "Task Management App",
+            description: "A productivity tool with drag-and-drop features, user authentication, and real-time database updates.",
+            image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500&auto=format&fit=crop&q=60",
+            techStack: ["React", "Firebase", "Tailwind"],
+            liveLink: "#",
+            codeLink: "#"
+        },
+        {
+            id: 5,
+            title: "Social Media Dashboard",
+            description: "Analytics dashboard providing insights on social media engagement with charts and data visualization.",
+            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60",
+            techStack: ["Next.js", "Chart.js", "Node.js"],
+            liveLink: "#",
+            codeLink: "#"
+        },
+        {
+            id: 6,
+            title: "AI Image Generator",
+            description: "An AI-powered application that generates images based on user prompts using OpenAI API.",
+            image: "https://images.unsplash.com/photo-1617791160505-6f00504e3504?w=500&auto=format&fit=crop&q=60",
+            techStack: ["React", "OpenAI API", "CSS"],
+            liveLink: "#",
+            codeLink: "#"
         }
     ];
 
+    // বাটন ক্লিক হ্যান্ডলার
+    const handleViewMore = () => {
+        setVisibleProjects((prevValue) => prevValue + 3);
+    };
+
     return (
         <section className="py-12 md:py-20 px-5 md:px-24 w-full" id="projects">
+            {/* এনিমেশনের জন্য স্টাইল ট্যাগ যোগ করা হলো */}
+            <style>
+                {`
+                    @keyframes fadeInUp {
+                        from { opacity: 0; transform: translateY(40px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                    .animate-card {
+                        animation: fadeInUp 0.6s ease-out forwards;
+                    }
+                `}
+            </style>
+
             <div className="flex flex-col items-center mb-12">
                 {/* টাইটেল - Hero সেকশনের ফন্টের সাথে মিল রেখে */}
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">
@@ -46,11 +95,13 @@ function Projects() {
 
             {/* প্রজেক্ট গ্রিড */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projectList.map((project) => (
+                {projectList.slice(0, visibleProjects).map((project) => (
                     <div key={project.id} 
                          className="bg-neutral-900/50 rounded-xl border border-neutral-800 overflow-hidden
                                     transform transition-all duration-300 ease-in-out
-                                    hover:-translate-y-2 hover:shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-500/50 group">
+                                    hover:-translate-y-2 hover:shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-500/50 group
+                                    animate-card" // এখানে কাস্টম এনিমেশন ক্লাস যোগ করা হয়েছে
+                    >
                         
                         {/* প্রজেক্ট ইমেজ */}
                         <div className="relative overflow-hidden h-48 w-full">
@@ -59,7 +110,7 @@ function Projects() {
                                 alt={project.title} 
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             />
-                            {/* ইমেজের উপর ওভারলে (ঐচ্ছিক) */}
+                            {/* ইমেজের উপর ওভারলে */}
                             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                 <span className="text-white font-bold border border-white px-4 py-1 rounded-full">View Details</span>
                             </div>
@@ -84,7 +135,7 @@ function Projects() {
                                 ))}
                             </div>
 
-                            {/* বাটন সেকশন - Hero সেকশনের বাটনের স্টাইল কপি করা হয়েছে */}
+                            {/* বাটন সেকশন */}
                             <div className="flex items-center justify-between gap-4">
                                 <a href={project.liveLink} target="_blank" rel="noopener noreferrer" 
                                    className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-sm font-bold py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:shadow-cyan-500/30 transform hover:-translate-y-1 transition-all duration-300">
@@ -101,13 +152,18 @@ function Projects() {
                 ))}
             </div>
             
-             {/* See More Button (Optional) */}
-             <div className='flex justify-center mt-12'>
-                <button className='flex items-center gap-2 border-2 border-cyan-500 text-cyan-500 font-bold py-2 px-6 rounded-full hover:bg-cyan-500 hover:text-white transition-all duration-300 ease-in-out'>
-                    <span>View All Projects</span>
-                    <i className="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
+             {/* See More Button: যদি দৃশ্যমান প্রজেক্ট লিস্টের মোট দৈর্ঘ্যের চেয়ে কম হয়, তবেই বাটন দেখাবে */}
+             {visibleProjects < projectList.length && (
+                 <div className='flex justify-center mt-12'>
+                    <button 
+                        onClick={handleViewMore}
+                        className='flex items-center gap-2 border-2 border-cyan-500 text-cyan-500 font-bold py-2 px-6 rounded-full hover:bg-cyan-500 hover:text-white transition-all duration-300 ease-in-out'
+                    >
+                        <span>View More Projects</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+             )}
         </section>
     );
 }

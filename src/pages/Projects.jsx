@@ -18,7 +18,7 @@ function Projects() {
         {
             id: 2,
             title: "Crypto vision",
-            description: "A clean, responsive, and dark-themed personal portfolio website template for developers.",
+            description: "A comprehensive cryptocurrency tracking dashboard that displays real-time market trends, coin prices, and historical data.",
             image: "/Images/crypto-10.vercel.app_(Nest Hub Max) (1).png",
             techStack: ["React.js", "API", "Tailwind "],
             liveLink: "https://crypto-10.vercel.app/",
@@ -37,8 +37,8 @@ function Projects() {
         {
             id: 4,
             title: "Flowers Landing page",
-            description: "A productivity tool with drag-and-drop features, user authentication, and real-time database updates.",
-            image: "/Images/Flowers.png",
+            description: "A visually appealing and responsive landing page designed for a floral shop, featuring elegant animations and product showcases.",
+            image: "/Images/Flower.jpg",
             techStack: ["React", "Swing Library", "Tailwind"],
             liveLink: "#",
             codeLink: "#"
@@ -46,7 +46,7 @@ function Projects() {
         {
             id: 5,
             title: "Survey Jumper Tool",
-            description: "Analytics dashboard providing insights on social media engagement with charts and data visualization.",
+            description: "An interactive survey management tool that allows users to navigate through questionnaires and submit responses efficiently.",
             image: "/Images/Survey.png",
             techStack: ["React", "Firebase", "Tailwind "],
             liveLink: "#",

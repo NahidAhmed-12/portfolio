@@ -10,7 +10,7 @@ function Projects() {
             id: 1,
             title: "E-Commerce Website",
             description: "A full-featured e-commerce platform with cart functionality, payment gateway integration, and user dashboard.",
-            image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=500&auto=format&fit=crop&q=60",
+            image: "/Images/e-comm.png",
             techStack: ["React", "Tailwind", "Redux"],
             liveLink: "#",
             codeLink: "#"

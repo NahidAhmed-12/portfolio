@@ -62,7 +62,7 @@ function Projects() {
             techStack: ["React", "Firebase", "Tailwind "],
             liveLink: "#",
             codeLink: "#"
-        },
+        }
     ];
 
     // বাটন ক্লিক হ্যান্ডলার

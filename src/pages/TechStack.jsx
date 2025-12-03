@@ -1,93 +1,105 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCode, FaLayerGroup } from 'react-icons/fa';
+import { FaCode, FaLayerGroup, FaArrowRight } from 'react-icons/fa';
 
 function TechStack() {
     // Animation Variants
     const fadeLeft = {
         hidden: { opacity: 0, x: -50 },
-        visible: { opacity: 1, x: 0, transition: { duration: 0.8 } }
+        visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
     };
 
     const fadeRight = {
         hidden: { opacity: 0, x: 50 },
-        visible: { opacity: 1, x: 0, transition: { duration: 0.8 } }
+        visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
     };
 
     return (
-        <section className='relative w-full py-20 md:py-32 bg-[#050505] overflow-hidden'>
+        <section className='relative w-full py-20 md:py-32 bg-[#020617] overflow-hidden'>
             
-            {/* Background Details */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-900/10 rounded-full blur-[120px] -z-10"></div>
+            {/* Global Background (Consistent) */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[120px] opacity-40"></div>
+                <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[120px] opacity-40"></div>
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
+            </div>
 
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
-                <div className='flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-16'>
+                <div className='flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20'>
 
-                    {/* Image Container (Left Side) */}
+                    {/* Left Side: Image / Illustration */}
                     <motion.div 
-                        className='w-full md:w-1/2 flex justify-center items-center'
+                        className='w-full md:w-1/2 flex justify-center items-center perspective-1000'
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
+                        viewport={{ once: true, margin: "-100px" }}
                         variants={fadeLeft}
                     >
-                        <div className="relative group">
-                            {/* Card Glow */}
-                            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                        <div className="relative group w-full max-w-md">
+                            {/* Card Glow Background */}
+                            <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-amber-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
                             
-                            {/* Glass Container for Image */}
-                            <div className="relative bg-[#0f0f0f]/80 backdrop-blur-xl border border-white/10 p-6 md:p-10 rounded-2xl shadow-2xl">
-                                <img 
-                                    className='w-full max-w-sm h-auto transform transition-transform duration-500 group-hover:scale-105' 
-                                    src="/assets/tech-stack-illustration.png" 
-                                    alt="Tech Stack" 
-                                />
-                                {/* Decoration Dots */}
-                                <div className="absolute top-4 right-4 flex gap-2">
-                                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                            {/* Glass Window Container */}
+                            <div className="relative bg-[#0f172a]/60 backdrop-blur-xl border border-white/10 p-2 rounded-2xl shadow-2xl overflow-hidden">
+                                {/* Browser Header */}
+                                <div className="bg-[#020617]/50 border-b border-white/5 p-4 flex gap-2 rounded-t-xl">
+                                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                    <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                                </div>
+                                
+                                {/* Image Area */}
+                                <div className="p-8 md:p-12 flex justify-center bg-gradient-to-b from-[#1e293b]/50 to-transparent">
+                                    <img 
+                                        className='w-full h-auto drop-shadow-2xl transform transition-transform duration-500 group-hover:scale-105 group-hover:rotate-1' 
+                                        src="/assets/tech-stack-illustration.png" 
+                                        alt="Tech Stack" 
+                                    />
                                 </div>
                             </div>
                         </div>
                     </motion.div>
 
-                    {/* Text Content (Right Side) */}
+                    {/* Right Side: Content */}
                     <motion.div 
                         className='w-full md:w-1/2 text-center md:text-left'
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
+                        viewport={{ once: true, margin: "-100px" }}
                         variants={fadeRight}
                     >
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-medium mb-4">
+                        {/* Badge */}
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-bold tracking-widest uppercase mb-6">
                             <FaLayerGroup />
                             <span>Development Tools</span>
                         </div>
 
-                        <h2 className='text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight'>
+                        <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight leading-tight'>
                             The Technologies <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500">
                                 I Use Everyday
                             </span>
                         </h2>
 
-                        <p className='text-gray-400 text-base md:text-lg leading-relaxed mb-8'>
+                        <p className='text-slate-400 text-base md:text-lg leading-relaxed mb-8 font-light'>
                             I enjoy building modern, fast, and scalable web applications. My primary stack includes 
-                            <span className="text-white font-semibold"> React</span> for dynamic UIs and 
-                            <span className="text-white font-semibold"> Tailwind CSS</span> for styling. 
+                            <span className="text-orange-200 font-semibold"> React</span> for dynamic UIs and 
+                            <span className="text-amber-200 font-semibold"> Tailwind CSS</span> for styling. 
                             I'm passionate about writing clean code to deliver the best possible user experience.
                         </p>
 
                         <div className='flex justify-center md:justify-start'>
                              <a 
                                 href="/contact" 
-                                className="relative overflow-hidden group px-8 py-3.5 rounded-full bg-white/5 border border-white/10 text-white font-semibold transition-all duration-300 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]"
+                                className="relative group inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-slate-800 to-slate-900 border border-white/10 text-white font-semibold transition-all duration-300 hover:border-orange-500/50 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)] overflow-hidden"
                              >
-                                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                                {/* Hover Gradient Overlay */}
+                                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-500/10 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                                
                                 <span className="relative flex items-center gap-3">
-                                    <FaCode className="text-cyan-400" />
-                                    Let's Build Together
+                                    <FaCode className="text-orange-400 group-hover:rotate-12 transition-transform" />
+                                    <span>Let's Build Together</span>
+                                    <FaArrowRight className="text-sm text-slate-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
                                 </span>
                              </a>
                         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaArrowRight, FaEye } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaArrowRight, FaEye, FaLayerGroup } from 'react-icons/fa';
 
 function Projects() {
     const [visibleProjects, setVisibleProjects] = useState(3);
@@ -67,11 +67,14 @@ function Projects() {
     };
 
     return (
-        <section className="relative w-full py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] overflow-hidden" id="projects">
+        <section className="relative w-full py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-[#020617] overflow-hidden" id="projects">
             
-            {/* Background Elements */}
-            <div className="absolute top-[20%] right-0 w-[500px] h-[500px] bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none"></div>
-            <div className="absolute bottom-[10%] left-0 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+            {/* Global Background (Consistent) */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <div className="absolute top-[20%] right-0 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[120px]"></div>
+                <div className="absolute bottom-[10%] left-0 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[120px]"></div>
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
+            </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Header */}
@@ -80,63 +83,67 @@ function Projects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="flex flex-col items-center mb-16"
+                    className="flex flex-col items-center mb-20 text-center"
                 >
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-bold tracking-widest uppercase mb-4">
+                        <FaLayerGroup />
+                        <span>Portfolio</span>
+                    </div>
+
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                        My Recent <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Projects</span>
+                        My Recent <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500">Projects</span>
                     </h2>
-                    <p className="text-gray-400 text-center max-w-2xl text-base md:text-lg">
+                    <p className="text-slate-400 max-w-2xl text-base md:text-lg font-light leading-relaxed">
                         Explore some of the projects I've worked on, showcasing my expertise in modern web development and UI/UX design.
                     </p>
-                    <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mt-6"></div>
                 </motion.div>
 
                 {/* Projects Grid */}
-                {/* layout prop যোগ করা হয়েছে স্মুথ রি-সাইজিং এর জন্য */}
                 <motion.div 
                     layout
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
                     <AnimatePresence mode='popLayout'>
-                        {projectList.slice(0, visibleProjects).map((project, index) => (
+                        {projectList.slice(0, visibleProjects).map((project) => (
                             <motion.div 
                                 layout
                                 key={project.id} 
-                                // এখানে সরাসরি animate প্রপ ব্যবহার করা হয়েছে যাতে মাউন্ট হওয়ার সাথে সাথেই এনিমেশন হয়
                                 initial={{ opacity: 0, scale: 0.9, y: 50 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 50 }}
                                 transition={{ duration: 0.5, delay: 0.1 }}
-                                className="group relative bg-[#0a0a0a] rounded-2xl border border-white/5 overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] flex flex-col"
+                                className="group relative bg-slate-900/40 backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10 flex flex-col"
                             >
                                 {/* Image Container */}
-                                <div className="relative h-56 overflow-hidden">
+                                <div className="relative h-60 overflow-hidden">
+                                    <div className="absolute inset-0 bg-slate-900/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
                                     <img 
                                         src={project.image} 
                                         alt={project.title} 
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
                                     />
-                                    {/* Overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60"></div>
-                                    <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
-                                        <span className="text-xs font-semibold text-cyan-400">Featured</span>
+                                    {/* Overlay Gradient */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90 z-20"></div>
+                                    
+                                    <div className="absolute top-4 right-4 z-30 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full border border-orange-500/30">
+                                        <span className="text-[10px] font-bold uppercase tracking-wider text-orange-400">Featured</span>
                                     </div>
                                 </div>
 
                                 {/* Content */}
-                                <div className="p-6 flex flex-col flex-1">
-                                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                                <div className="p-6 pt-0 flex flex-col flex-1 relative z-20">
+                                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors duration-300">
                                         {project.title}
                                     </h3>
                                     
-                                    <p className="text-gray-400 text-sm mb-6 flex-1 line-clamp-3 leading-relaxed">
+                                    <p className="text-slate-400 text-sm mb-6 flex-1 line-clamp-3 leading-relaxed font-light">
                                         {project.description}
                                     </p>
 
                                     {/* Tech Stack */}
-                                    <div className="flex flex-wrap gap-2 mb-6">
+                                    <div className="flex flex-wrap gap-2 mb-8">
                                         {project.techStack.map((tech, index) => (
-                                            <span key={index} className="text-xs font-medium text-cyan-300 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+                                            <span key={index} className="text-[11px] font-semibold text-orange-200 bg-orange-500/10 px-2.5 py-1 rounded-md border border-orange-500/10">
                                                 {tech}
                                             </span>
                                         ))}
@@ -145,17 +152,17 @@ function Projects() {
                                     {/* Buttons */}
                                     <div className="flex items-center gap-4 mt-auto">
                                         <a href={project.liveLink} target="_blank" rel="noopener noreferrer" 
-                                           className="flex-1 group/btn relative overflow-hidden rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 p-[1px] focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-                                            <div className="relative h-full w-full bg-[#0a0a0a] group-hover/btn:bg-transparent transition-colors duration-300 rounded-lg flex items-center justify-center py-2.5">
-                                                <span className="flex items-center gap-2 text-sm font-bold text-white">
-                                                    <FaEye className="text-cyan-400 group-hover/btn:text-white" /> Live Demo
+                                           className="flex-1 group/btn relative overflow-hidden rounded-lg bg-gradient-to-r from-orange-500 to-amber-600 p-[1px] shadow-lg hover:shadow-orange-500/20 transition-all duration-300">
+                                            <div className="relative h-full w-full bg-[#020617] group-hover/btn:bg-transparent transition-colors duration-300 rounded-lg flex items-center justify-center py-2.5">
+                                                <span className="flex items-center gap-2 text-sm font-bold text-white group-hover/btn:text-white transition-colors">
+                                                    <FaEye className="text-orange-400 group-hover/btn:text-white" /> Live Demo
                                                 </span>
                                             </div>
                                         </a>
                                         
                                         <a href={project.codeLink} target="_blank" rel="noopener noreferrer" 
-                                           className="flex-1 flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-gray-300 text-sm font-bold py-3 rounded-lg hover:bg-white/10 hover:text-white transition-all duration-300">
-                                            <FaGithub size={18} /> Code
+                                           className="flex-1 flex items-center justify-center gap-2 bg-slate-800/50 border border-white/10 text-slate-300 text-sm font-bold py-2.5 rounded-lg hover:bg-slate-700 hover:text-white hover:border-white/20 transition-all duration-300">
+                                            <FaGithub size={16} /> Code
                                         </a>
                                     </div>
                                 </div>
@@ -174,10 +181,12 @@ function Projects() {
                     >
                         <button 
                             onClick={handleViewMore}
-                            className="group relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-bold text-white rounded-full bg-white/5 border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]"
+                            className="group relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-full bg-slate-800 border border-white/10 transition-all duration-300 hover:border-orange-500/50 hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]"
                         >
-                            <span className="mr-2">View More Projects</span>
-                            <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-500/10 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            <span className="relative flex items-center gap-2">
+                                View More Projects <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                            </span>
                         </button>
                     </motion.div>
                 )}

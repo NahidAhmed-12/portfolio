@@ -11,12 +11,10 @@ const techSlides = [
   { icon: <FaFigma />, name: "UI/UX Design", label: "Creative" },
 ];
 
-// --- 1. GLOBAL BACKGROUND (Fix: Changed 'fixed' to 'absolute') ---
-// এখন এটি শুধু হিরো সেকশনের ভেতরেই থাকবে, অন্য সেকশনে ডিস্টার্ব করবে না।
+// --- 1. GLOBAL BACKGROUND ---
 const GlobalBackground = memo(() => (
   <div className="absolute inset-0 z-0 pointer-events-none">
       <div className="absolute inset-0 bg-[#020617]"></div>
-      {/* Optimized Gradients */}
       <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] rounded-full bg-orange-600/10 blur-[100px] transform-gpu"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vh] rounded-full bg-red-900/10 blur-[100px] transform-gpu"></div>
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
@@ -71,11 +69,8 @@ const SlideshowCard = memo(() => {
 // --- MAIN HERO ---
 const Hero = () => {
   const currentYear = new Date().getFullYear();
-
-  // --- 3D LOGIC ---
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  
   const mouseX = useSpring(x, { stiffness: 30, damping: 30 });
   const mouseY = useSpring(y, { stiffness: 30, damping: 30 });
 
@@ -106,13 +101,15 @@ const Hero = () => {
   }, [x, y]);
 
   return (
-    // 'overflow-hidden' ensures the background doesn't bleed into the next section
     <div className="relative w-full min-h-screen bg-[#020617] text-white overflow-hidden font-sans selection:bg-orange-500/30 selection:text-orange-100">
       
-      {/* 1. ABSOLUTE BACKGROUND (Solves the overlap issue) */}
       <GlobalBackground />
 
-      <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between h-full min-h-screen px-6 pt-32 pb-10 lg:pt-20 relative z-10 gap-12 lg:gap-0">
+      {/* FIX 1: Padding 조정 
+          - pt-32 (Mobile): Navbar থেকে নামানো হয়েছে কিন্তু খুব বেশি নয়।
+          - lg:pt-28 (Desktop): আগেরবারের (pt-36) চেয়ে কমিয়ে উপরে তোলা হয়েছে, কিন্তু অরিজিনাল (pt-20) এর চেয়ে বাড়িয়ে গ্যাপ ঠিক রাখা হয়েছে। 
+      */}
+      <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between h-full min-h-screen px-6 pt-32 pb-10 lg:pt-28 relative z-10 gap-12 lg:gap-0">
         
         {/* --- LEFT SIDE: CONTENT --- */}
         <motion.div 
@@ -121,7 +118,8 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="flex flex-col justify-center w-full lg:w-1/2 text-center lg:text-left z-20 relative"
         >
-             <div className="space-y-6 relative z-10">
+             {/* Spacing কমিয়ে 'space-y-4' রাখা হয়েছে */}
+             <div className="space-y-4 relative z-10">
               
               {/* Badge */}
               <div className="flex justify-center lg:justify-start">
@@ -153,10 +151,10 @@ const Hero = () => {
                 </span>
               </h1>
               
-              {/* Typing Animation */}
-              <div className="text-slate-400 text-lg sm:text-2xl font-light min-h-[40px] flex items-center justify-center lg:justify-start">
+              {/* FIX 2: Typing Animation (whitespace-nowrap added to keep in one line) */}
+              <div className="text-slate-400 text-lg sm:text-2xl font-light min-h-[40px] flex items-center justify-center lg:justify-start whitespace-nowrap">
                  <span>I am a&nbsp;</span>
-                 <span className="font-semibold text-slate-100 w-[220px] text-left">
+                 <span className="font-semibold text-slate-100 text-left">
                     <TypeAnimation
                         sequence={[
                             'Frontend Developer', 2000,
@@ -178,8 +176,8 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-8 relative z-10">
+            {/* FIX 3: Buttons Spacing Reduced (pt-6 -> pt-5) */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-5 relative z-10">
                 <button className="relative w-full sm:w-auto px-8 py-3.5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg flex items-center justify-center gap-2">
                     View My Work 
                     <FaArrowRight className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
@@ -190,8 +188,8 @@ const Hero = () => {
                 </button>
             </div>
 
-            {/* Socials */}
-            <div className="flex items-center justify-center lg:justify-start gap-8 pt-10 relative z-10">
+            {/* FIX 3: Social Spacing Reduced (pt-5 -> pt-4) to move it UP */}
+            <div className="flex items-center justify-center lg:justify-start gap-8 pt-4 relative z-10">
                <div className="flex gap-5">
                   {[FaGithub, FaLinkedinIn, FaFacebookF].map((Icon, i) => (
                     <a key={i} href="#" className="text-slate-400 hover:text-orange-400 transition-colors text-xl transform hover:scale-110">
@@ -208,7 +206,7 @@ const Hero = () => {
         </motion.div>
 
 
-        {/* --- RIGHT SIDE: 3D CARD (Centered Background) --- */}
+        {/* --- RIGHT SIDE --- */}
         <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -219,21 +217,15 @@ const Hero = () => {
             onMouseLeave={handleMouseLeave}
             ref={cardRef}
         >
-             {/* --- CENTERED BACKGROUND DECORATION --- */}
              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] -z-10 pointer-events-none flex items-center justify-center">
-                 {/* 1. Main Orange Glow */}
                  <div className="absolute w-[350px] h-[350px] bg-orange-500/20 rounded-full blur-[80px]"></div>
-                 {/* 2. Rotating Ring */}
                  <div className="absolute w-[400px] h-[400px] border border-orange-500/10 rounded-full animate-[spin_10s_linear_infinite] border-dashed will-change-transform"></div>
-                 {/* 3. Dot Grid */}
                  <div className="absolute inset-0 bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:20px_20px] opacity-20 mask-image-radial-gradient"></div>
              </div>
 
-             {/* Floating Icons */}
              <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-6 right-10 z-40 text-orange-400 bg-slate-900 p-3 rounded-xl border border-orange-500/30 shadow-xl" style={{ willChange: 'transform' }}><FaReact className="text-3xl animate-spin-slow"/></motion.div>
              <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 -left-6 z-40 text-amber-400 bg-slate-900 p-3 rounded-xl border border-amber-500/30 shadow-xl" style={{ willChange: 'transform' }}><SiRedux className="text-3xl"/></motion.div>
 
-             {/* 3D Card Container */}
              <motion.div 
                 style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
                 className="relative w-[300px] h-[420px] sm:w-[350px] sm:h-[480px] rounded-[24px] border border-white/10 shadow-2xl p-2 bg-gradient-to-br from-white/5 to-transparent"
@@ -251,8 +243,6 @@ const Hero = () => {
                     />
                     
                     <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90"></div>
-
-                    {/* Slideshow */}
                     <SlideshowCard />
                 </div>
              </motion.div>

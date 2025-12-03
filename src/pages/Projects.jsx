@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt, FaArrowRight, FaEye } from 'react-icons/fa';
 
 function Projects() {
-    // স্টেট ডিক্লেয়ার করা হলো: শুরুতে ৩টি প্রজেক্ট দেখাবে
     const [visibleProjects, setVisibleProjects] = useState(3);
 
-    // আপনার প্রজেক্টের তথ্য এখানে (আমি মোট ৬টি প্রজেক্ট দিয়েছি যাতে লোড করার মতো ডাটা থাকে)
     const projectList = [
         {
             id: 1,
@@ -20,7 +20,7 @@ function Projects() {
             title: "Crypto Hunter Dashboard",
             description: "A comprehensive cryptocurrency tracking dashboard that displays real-time market trends, coin prices, and historical data.",
             image: "/Projects/Crypto.avif",
-            techStack: ["React.js", "API", "Tailwind "],
+            techStack: ["React.js", "API", "Tailwind"],
             liveLink: "https://crypto-10.vercel.app/",
             codeLink: "#"
         },
@@ -33,7 +33,6 @@ function Projects() {
             liveLink: "https://weathers-10.vercel.app/",
             codeLink: "#"
         },
-        // --- নিচে নতুন ৩টি প্রজেক্ট যোগ করা হলো যা বাটনে ক্লিক করলে আসবে ---
         {
             id: 4,
             title: "Flowers Landing page",
@@ -43,7 +42,6 @@ function Projects() {
             liveLink: "#",
             codeLink: "#"
         },
-       
         {
             id: 5,
             title: "AI Image Generator",
@@ -53,119 +51,137 @@ function Projects() {
             liveLink: "https://ai-image-10.vercel.app/",
             codeLink: "#"
         },
-
-         {
+        {
             id: 6,
             title: "Survey Jumper Tool",
             description: "An interactive survey management tool that allows users to navigate through questionnaires and submit responses efficiently.",
             image: "/Projects/Survey.avif",
-            techStack: ["React", "Firebase", "Tailwind "],
+            techStack: ["React", "Firebase", "Tailwind"],
             liveLink: "#",
             codeLink: "#"
         }
     ];
 
-    // বাটন ক্লিক হ্যান্ডলার
     const handleViewMore = () => {
         setVisibleProjects((prevValue) => prevValue + 3);
     };
 
     return (
-        <section className="py-12 md:py-20 px-5 md:px-24 w-full" id="projects">
-            {/* এনিমেশনের জন্য স্টাইল ট্যাগ যোগ করা হলো */}
-            <style>
-                {`
-                    @keyframes fadeInUp {
-                        from { opacity: 0; transform: translateY(40px); }
-                        to { opacity: 1; transform: translateY(0); }
-                    }
-                    .animate-card {
-                        animation: fadeInUp 0.6s ease-out forwards;
-                    }
-                `}
-            </style>
-
-            <div className="flex flex-col items-center mb-12">
-                {/* টাইটেল - Hero সেকশনের ফন্টের সাথে মিল রেখে */}
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">
-                    My Recent <span className="text-blue-400">Projects</span>
-                </h2>
-                <p className="text-gray-400 text-center max-w-lg">
-                    Here are some of the projects I've worked on. Each project represents a unique challenge and solution.
-                </p>
-            </div>
-
-            {/* প্রজেক্ট গ্রিড */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projectList.slice(0, visibleProjects).map((project) => (
-                    <div key={project.id} 
-                         className="bg-neutral-900/50 rounded-xl border border-neutral-800 overflow-hidden
-                                    transform transition-all duration-300 ease-in-out
-                                    hover:-translate-y-2 hover:shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-500/50 group
-                                    animate-card" // এখানে কাস্টম এনিমেশন ক্লাস যোগ করা হয়েছে
-                    >
-                        
-                        {/* প্রজেক্ট ইমেজ */}
-                        <div className="relative overflow-hidden h-48 w-full">
-                            <img 
-                                src={project.image} 
-                                alt={project.title} 
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-                            {/* ইমেজের উপর ওভারলে */}
-                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <span className="text-white font-bold border border-white px-4 py-1 rounded-full">View Details</span>
-                            </div>
-                        </div>
-
-                        {/* প্রজেক্ট কন্টেন্ট */}
-                        <div className="p-6">
-                            <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-                                {project.title}
-                            </h3>
-                            
-                            <p className="text-gray-400 text-sm mb-4 line-clamp-3">
-                                {project.description}
-                            </p>
-
-                            {/* টেকনোলজি ট্যাগস */}
-                            <div className="flex flex-wrap gap-2 mb-6">
-                                {project.techStack.map((tech, index) => (
-                                    <span key={index} className="text-xs font-medium text-cyan-300 bg-cyan-900/30 px-2 py-1 rounded-md border border-cyan-800/50">
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-
-                            {/* বাটন সেকশন */}
-                            <div className="flex items-center justify-between gap-4">
-                                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" 
-                                   className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-sm font-bold py-2 px-4 rounded-lg shadow-md hover:shadow-lg hover:shadow-cyan-500/30 transform hover:-translate-y-1 transition-all duration-300">
-                                    <i className="fa-solid fa-eye"></i> Live Demo
-                                </a>
-                                
-                                <a href={project.codeLink} target="_blank" rel="noopener noreferrer" 
-                                   className="flex-1 flex items-center justify-center gap-2 bg-neutral-800 border border-neutral-700 text-gray-300 text-sm font-bold py-2 px-4 rounded-lg hover:text-cyan-500 hover:border-cyan-500 hover:shadow-lg hover:shadow-cyan-500/20 transform hover:-translate-y-1 transition-all duration-300">
-                                    <i className="fa-brands fa-github"></i> Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+        <section className="relative w-full py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] overflow-hidden" id="projects">
             
-             {/* See More Button: যদি দৃশ্যমান প্রজেক্ট লিস্টের মোট দৈর্ঘ্যের চেয়ে কম হয়, তবেই বাটন দেখাবে */}
-             {visibleProjects < projectList.length && (
-                 <div className='flex justify-center mt-12'>
-                    <button 
-                        onClick={handleViewMore}
-                        className='flex items-center gap-2 border-2 border-cyan-500 text-cyan-500 font-bold py-2 px-6 rounded-full hover:bg-cyan-500 hover:text-white transition-all duration-300 ease-in-out'
+            {/* Background Elements */}
+            <div className="absolute top-[20%] right-0 w-[500px] h-[500px] bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-[10%] left-0 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div className="max-w-7xl mx-auto relative z-10">
+                {/* Section Header */}
+                <motion.div 
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="flex flex-col items-center mb-16"
+                >
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                        My Recent <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Projects</span>
+                    </h2>
+                    <p className="text-gray-400 text-center max-w-2xl text-base md:text-lg">
+                        Explore some of the projects I've worked on, showcasing my expertise in modern web development and UI/UX design.
+                    </p>
+                    <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mt-6"></div>
+                </motion.div>
+
+                {/* Projects Grid */}
+                {/* layout prop যোগ করা হয়েছে স্মুথ রি-সাইজিং এর জন্য */}
+                <motion.div 
+                    layout
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    <AnimatePresence mode='popLayout'>
+                        {projectList.slice(0, visibleProjects).map((project, index) => (
+                            <motion.div 
+                                layout
+                                key={project.id} 
+                                // এখানে সরাসরি animate প্রপ ব্যবহার করা হয়েছে যাতে মাউন্ট হওয়ার সাথে সাথেই এনিমেশন হয়
+                                initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.9, y: 50 }}
+                                transition={{ duration: 0.5, delay: 0.1 }}
+                                className="group relative bg-[#0a0a0a] rounded-2xl border border-white/5 overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] flex flex-col"
+                            >
+                                {/* Image Container */}
+                                <div className="relative h-56 overflow-hidden">
+                                    <img 
+                                        src={project.image} 
+                                        alt={project.title} 
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+                                    {/* Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60"></div>
+                                    <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                                        <span className="text-xs font-semibold text-cyan-400">Featured</span>
+                                    </div>
+                                </div>
+
+                                {/* Content */}
+                                <div className="p-6 flex flex-col flex-1">
+                                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                                        {project.title}
+                                    </h3>
+                                    
+                                    <p className="text-gray-400 text-sm mb-6 flex-1 line-clamp-3 leading-relaxed">
+                                        {project.description}
+                                    </p>
+
+                                    {/* Tech Stack */}
+                                    <div className="flex flex-wrap gap-2 mb-6">
+                                        {project.techStack.map((tech, index) => (
+                                            <span key={index} className="text-xs font-medium text-cyan-300 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    {/* Buttons */}
+                                    <div className="flex items-center gap-4 mt-auto">
+                                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer" 
+                                           className="flex-1 group/btn relative overflow-hidden rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 p-[1px] focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+                                            <div className="relative h-full w-full bg-[#0a0a0a] group-hover/btn:bg-transparent transition-colors duration-300 rounded-lg flex items-center justify-center py-2.5">
+                                                <span className="flex items-center gap-2 text-sm font-bold text-white">
+                                                    <FaEye className="text-cyan-400 group-hover/btn:text-white" /> Live Demo
+                                                </span>
+                                            </div>
+                                        </a>
+                                        
+                                        <a href={project.codeLink} target="_blank" rel="noopener noreferrer" 
+                                           className="flex-1 flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-gray-300 text-sm font-bold py-3 rounded-lg hover:bg-white/10 hover:text-white transition-all duration-300">
+                                            <FaGithub size={18} /> Code
+                                        </a>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
+                </motion.div>
+                
+                {/* View More Button */}
+                {visibleProjects < projectList.length && (
+                    <motion.div 
+                        layout
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className='flex justify-center mt-16'
                     >
-                        <span>View More Projects</span>
-                        <i className="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-             )}
+                        <button 
+                            onClick={handleViewMore}
+                            className="group relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-bold text-white rounded-full bg-white/5 border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]"
+                        >
+                            <span className="mr-2">View More Projects</span>
+                            <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                        </button>
+                    </motion.div>
+                )}
+            </div>
         </section>
     );
 }

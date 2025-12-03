@@ -1,102 +1,106 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { FaUser, FaCode, FaEnvelope, FaMapMarkerAlt, FaDownload, FaArrowRight } from 'react-icons/fa';
 
 function About() {
   return (
-    // পরিবর্তন: 'py-12' বা আগের ভ্যালুর বদলে 'pt-0' দেওয়া হয়েছে যাতে উপরে কোনো ফাঁকা জায়গা না থাকে।
-    // 'pb-12 md:pb-20' রাখা হয়েছে যাতে নিচের দিকে স্পেস ঠিক থাকে।
-    <section id="about" className="pt-0 pb-12 md:pt-0 md:pb-20 relative overflow-hidden">
+    <section id="about" className="relative py-20 bg-[#050505] overflow-hidden">
       
-      {/* --- Background Glow (Skills সেকশনের সাথে মিল রেখে) --- */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* --- Section Header --- */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-wide">
+        {/* Header */}
+        <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-tight">
             About <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Me</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mt-3 rounded-full"></div>
-          <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-            Get to know me better. Here is a little brief about my journey as a developer.
-          </p>
-        </div>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mt-4 rounded-full"></div>
+        </motion.div>
 
-        {/* --- Main Content --- */}
-        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           
-          {/* Left Side: Image with Gradient Border */}
-          <div className="w-full md:w-5/12 flex justify-center">
-            {/* 
-               সংশোধন: আগের 'p-1 bg-gradient...' সরিয়ে সরাসরি 'border-2 border-cyan-500' দেওয়া হয়েছে।
-               এর ফলে ব্যাকগ্রাউন্ড এখন সম্পূর্ণ transparent থাকবে এবং নীল দেখাবে না। 
-            */}
-            <div className="rounded-2xl border-2 border-cyan-500 shadow-2xl shadow-cyan-500/20">
-              <div className="bg-transparent rounded-xl overflow-hidden">
+          {/* Image Section */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full lg:w-5/12 flex justify-center relative"
+          >
+            {/* Decorative Ring */}
+            <div className="absolute inset-0 border-2 border-dashed border-cyan-500/20 rounded-2xl animate-[spin_20s_linear_infinite] pointer-events-none"></div>
+            
+            <div className="relative z-10 p-2 bg-gradient-to-b from-cyan-500/20 to-transparent rounded-2xl backdrop-blur-sm">
                 <img 
                   src="/person.webp" 
                   alt="Nahid" 
-                  className="w-72 h-72 md:w-80 md:h-80 object-cover transition-transform duration-500 hover:scale-110 opacity-90 hover:opacity-100"
+                  className="w-full max-w-[350px] md:max-w-[400px] rounded-xl shadow-2xl border border-white/10"
                 />
-              </div>
             </div>
-          </div>
+            {/* Floating Badge */}
+            <div className="absolute -bottom-6 -right-6 bg-[#0a0a0a] border border-cyan-500/30 p-4 rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.2)] z-20">
+                <p className="text-cyan-400 font-bold text-3xl">2+</p>
+                <p className="text-gray-400 text-xs uppercase tracking-wider">Years Exp.</p>
+            </div>
+          </motion.div>
 
-          {/* Right Side: Content */}
-          <div className="w-full md:w-7/12">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">
-              I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Nahid</span>
+          {/* Content Section */}
+          <motion.div 
+             initial={{ opacity: 0, x: 50 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.6 }}
+             className="w-full lg:w-7/12"
+          >
+            <h3 className="text-2xl md:text-4xl font-bold text-white mb-2">
+              Hi, I'm <span className="text-cyan-400">Nahid</span>
             </h3>
-            <h4 className="text-xl font-semibold text-gray-300 mb-4">
-              A Passionate Frontend Developer
-            </h4>
+            <h4 className="text-xl font-medium text-gray-300 mb-6">Frontend Web Developer</h4>
             
-            <p className="text-gray-400 leading-relaxed mb-8 text-base md:text-lg border-l-4 border-cyan-500 pl-4 bg-neutral-800/30 py-2 rounded-r-lg">
-              I specialize in building responsive, user-friendly, and aesthetic web applications. With a strong foundation in modern web technologies, I transform creative ideas into functional code. I am always eager to learn new tools and improve my skills.
+            <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8 border-l-4 border-cyan-500/50 pl-6">
+              I specialize in building responsive, user-friendly, and aesthetic web applications. 
+              My journey started with a curiosity for how websites work, which turned into a passion for clean code and pixel-perfect design.
+              I am always eager to learn new tools and improve my skills to deliver the best possible user experience.
             </p>
 
-            {/* --- Personal Info Grid (Icons Added) --- */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-              
-              <div className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300">
-                <i className="fa-solid fa-user text-cyan-500"></i>
-                <span className="font-bold min-w-[80px]">Name:</span>
-                <span>Nahid</span>
-              </div>
-
-              <div className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300">
-                <i className="fa-solid fa-code text-cyan-500"></i>
-                <span className="font-bold min-w-[80px]">Role:</span>
-                <span>Frontend Dev</span>
-              </div>
-
-              <div className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300">
-                <i className="fa-solid fa-envelope text-cyan-500"></i>
-                <span className="font-bold min-w-[80px]">Email:</span>
-                <span className="cursor-pointer">nahid@example.com</span>
-              </div>
-
-              <div className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300">
-                <i className="fa-solid fa-location-dot text-cyan-500"></i>
-                <span className="font-bold min-w-[80px]">Location:</span>
-                <span>Dhaka, BD</span>
-              </div>
-
+            {/* Info Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                {[
+                    { icon: <FaUser />, label: "Name", value: "Nahid Hasan" },
+                    { icon: <FaCode />, label: "Role", value: "Frontend Dev" },
+                    { icon: <FaEnvelope />, label: "Email", value: "nahid@example.com" },
+                    { icon: <FaMapMarkerAlt />, label: "Location", value: "Dhaka, BD" },
+                ].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-4 bg-white/5 p-4 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-all duration-300">
+                        <span className="text-cyan-400 text-xl">{item.icon}</span>
+                        <div>
+                            <p className="text-gray-500 text-xs uppercase">{item.label}</p>
+                            <p className="text-white font-medium">{item.value}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            {/* --- Buttons --- */}
+            {/* Buttons */}
             <div className="flex flex-wrap gap-4">
-              <button className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transform hover:-translate-y-1 transition-all duration-300">
-                Download CV <i className="fa-solid fa-download ml-2"></i>
-              </button>
+              <a href="/cv.pdf" download className="group relative px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full text-white font-bold shadow-lg shadow-cyan-500/25 overflow-hidden transition-all hover:shadow-cyan-500/40">
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                <span className="relative flex items-center gap-2">Download CV <FaDownload /></span>
+              </a>
               
-              <a href="/contact" className="px-8 py-3 rounded-lg border-2 border-cyan-500/50 text-cyan-400 font-bold hover:bg-cyan-500/10 hover:border-cyan-500 transition-all duration-300">
-                Contact Me
+              <a href="#contact" className="px-8 py-3 rounded-full border border-cyan-500/50 text-cyan-400 font-bold hover:bg-cyan-500/10 hover:border-cyan-500 transition-all flex items-center gap-2">
+                Contact Me <FaArrowRight />
               </a>
             </div>
 
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion';
@@ -81,12 +80,25 @@ const Hero = () => {
     }
   };
 
+  // --- FIX: Optimized Mobile Check (Debounce) ---
   useEffect(() => {
-      // Check if device is mobile to disable heavy tilt effects
-      const checkMobile = () => setIsMobile(window.innerWidth < 1024);
-      checkMobile();
+      let timeoutId;
+      
+      const checkMobile = () => {
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(() => {
+              setIsMobile(window.innerWidth < 1024);
+          }, 200);
+      };
+
+      // Run initially
+      setIsMobile(window.innerWidth < 1024);
+
       window.addEventListener('resize', checkMobile);
-      return () => window.removeEventListener('resize', checkMobile);
+      return () => {
+          window.removeEventListener('resize', checkMobile);
+          clearTimeout(timeoutId);
+      };
   }, []);
 
   const rotateX = useTransform(mouseY, [-0.5, 0.5], ["5deg", "-5deg"]);
@@ -225,19 +237,19 @@ const Hero = () => {
             ref={cardRef}
         >
              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] -z-10 pointer-events-none flex items-center justify-center">
-                 <div className="absolute w-[350px] h-[350px] bg-orange-500/20 rounded-full blur-[80px]"></div>
+                 <div className="absolute w-[350px] h-[350px] bg-orange-500/20 rounded-full blur-[80px] will-change-transform"></div>
                  {/* Reduced spin duration for performance */}
                  <div className="absolute w-[400px] h-[400px] border border-orange-500/10 rounded-full animate-[spin_15s_linear_infinite] border-dashed will-change-transform"></div>
                  <div className="absolute inset-0 bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:20px_20px] opacity-20 mask-image-radial-gradient"></div>
              </div>
 
-             <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-6 right-10 z-40 text-orange-400 bg-slate-900 p-3 rounded-xl border border-orange-500/30 shadow-xl" style={{ willChange: 'transform' }}><FaReact className="text-3xl animate-spin-slow"/></motion.div>
-             <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 -left-6 z-40 text-amber-400 bg-slate-900 p-3 rounded-xl border border-amber-500/30 shadow-xl" style={{ willChange: 'transform' }}><SiRedux className="text-3xl"/></motion.div>
+             <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-6 right-10 z-40 text-orange-400 bg-slate-900 p-3 rounded-xl border border-orange-500/30 shadow-xl will-change-transform"><FaReact className="text-3xl animate-spin-slow"/></motion.div>
+             <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 -left-6 z-40 text-amber-400 bg-slate-900 p-3 rounded-xl border border-amber-500/30 shadow-xl will-change-transform"><SiRedux className="text-3xl"/></motion.div>
 
              <motion.div 
                
                 style={!isMobile ? { rotateX, rotateY, transformStyle: "preserve-3d" } : {}}
-                className="relative w-[300px] h-[420px] sm:w-[350px] sm:h-[480px] rounded-[24px] border border-white/10 shadow-2xl p-2 bg-gradient-to-br from-white/5 to-transparent"
+                className="relative w-[300px] h-[420px] sm:w-[350px] sm:h-[480px] rounded-[24px] border border-white/10 shadow-2xl p-2 bg-gradient-to-br from-white/5 to-transparent will-change-transform"
              >
                 <div 
                     className="w-full h-full rounded-[20px] overflow-hidden relative group bg-[#0f172a]"

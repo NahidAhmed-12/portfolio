@@ -10,43 +10,44 @@ function Projects() {
             id: 1,
             title: "E-Commerce Website",
             description: "A full-featured e-commerce platform with cart functionality, payment gateway integration, and user dashboard.",
-            image: "/Projects/e-commrs.avif",
+            image: "public/Projects/e-commerce.avif",
             techStack: ["React", "Tailwind", "Redux"],
             liveLink: "#",
             codeLink: "#"
         },
         {
             id: 2,
-            title: "Crypto Hunter Dashboard",
-            description: "A comprehensive cryptocurrency tracking dashboard that displays real-time market trends, coin prices, and historical data.",
-            image: "/Projects/Crypto.avif",
-            techStack: ["React.js", "API", "Tailwind"],
-            liveLink: "https://crypto-10.vercel.app/",
+            title: "Flowers Landing page",
+            description: "A visually appealing and responsive landing page designed for a floral shop, featuring elegant animations and product showcases.",
+            image: "public/Projects/flower.avif",
+            techStack: ["React", "Swing Library", "Tailwind"],
+            liveLink: "#",
             codeLink: "#"
         },
         {
             id: 3,
             title: "Weather Dashboard",
             description: "Real-time weather forecasting app fetching data from OpenWeatherMap API with location support.",
-            image: "/Projects/weathers.avif",
+            image: "public/Projects/weathers.avif",
             techStack: ["JavaScript", "API", "Tailwind"],
             liveLink: "https://weathers-10.vercel.app/",
             codeLink: "#"
         },
+        
         {
             id: 4,
-            title: "Flowers Landing page",
-            description: "A visually appealing and responsive landing page designed for a floral shop, featuring elegant animations and product showcases.",
-            image: "/Projects/Flower.avif",
-            techStack: ["React", "Swing Library", "Tailwind"],
-            liveLink: "#",
+            title: "Crypto Hunter Dashboard",
+            description: "A comprehensive cryptocurrency tracking dashboard that displays real-time market trends, coin prices, and historical data.",
+            image: "public/Projects/crypto.avif",
+            techStack: ["React.js", "API", "Tailwind"],
+            liveLink: "https://crypto-10.vercel.app/",
             codeLink: "#"
         },
         {
             id: 5,
             title: "AI Image Generator",
             description: "An AI-powered application that generates images based on user prompts using Pollinations.ai API",
-            image: "/Projects/AI-img.avif",
+            image: "public/Projects/ai-image.avif",
             techStack: ["React", "Pollinations.ai API", "Tailwind"],
             liveLink: "https://ai-image-10.vercel.app/",
             codeLink: "#"
@@ -55,7 +56,7 @@ function Projects() {
             id: 6,
             title: "Survey Jumper Tool",
             description: "An interactive survey management tool that allows users to navigate through questionnaires and submit responses efficiently.",
-            image: "/Projects/Survey.avif",
+            image: "public/Projects/baul.avif",
             techStack: ["React", "Firebase", "Tailwind"],
             liveLink: "#",
             codeLink: "#"
@@ -124,8 +125,8 @@ function Projects() {
                                 </div>
 
                                 <div className="p-6 flex flex-col flex-1 relative z-20">
-                                    {/* Title Spacing: Mobile mt-4, Desktop mt-0 */}
-                                    <h3 className="text-2xl font-bold text-white mb-3 mt-4 md:mt-0 group-hover:text-orange-400 transition-colors duration-300">
+                                    {/* Title Spacing: Mobile -mt-4 (Slightly up), Desktop mt-0 (Normal) */}
+                                    <h3 className="text-2xl font-bold text-white mb-3 -mt-4 md:mt-0 group-hover:text-orange-400 transition-colors duration-300">
                                         {project.title}
                                     </h3>
                                     

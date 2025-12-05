@@ -2,9 +2,12 @@ import React, { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaReact, FaDownload, FaArrowRight, FaLinkedinIn, FaFacebookF, FaFigma } from 'react-icons/fa';
+import { FaGithub, FaReact, FaArrowRight, FaLinkedinIn,  FaFigma } from 'react-icons/fa';
 import { SiJavascript, SiRedux, SiNextdotjs } from 'react-icons/si';
+import { FaBriefcase } from "react-icons/fa";
+import { SiFiverr } from "react-icons/si";
 import '../index.css';
+
 
 // --- DATA ---
 const techSlides = [
@@ -80,7 +83,7 @@ const Hero = () => {
   };
 
   useEffect(() => {
-      // Breakpoint remains at 768px for Phone Desktop Site compatibility
+     
       const checkMobile = () => setIsMobile(window.innerWidth < 768);
       checkMobile();
       window.addEventListener('resize', checkMobile);
@@ -115,13 +118,7 @@ const Hero = () => {
  
     <div className="relative w-full text-white overflow-hidden font-sans selection:bg-orange-500/30 selection:text-orange-100">
       
-      {/* 
-         ADJUSTMENTS MADE:
-         1. pt-28 (Mobile) -> Keeps it safe from Navbar on phone.
-         2. lg:pt-20 (PC) -> Reduced from pt-36. This brings the content UP on PC.
-            Since 'items-center' is active on Desktop, it will center nicely without being pushed down.
-         3. md:flex-row -> Ensures "Phone Desktop Site" works perfectly.
-      */}
+    
       <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center lg:justify-between h-auto lg:min-h-screen px-6 pt-28 pb-10 lg:pt-20 lg:pb-0 relative z-10 gap-8 lg:gap-0">
         
    
@@ -195,24 +192,32 @@ const Hero = () => {
                     <FaArrowRight className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                 </button>
               
-                <Link 
-                    to="/contact"
-                    className="relative w-full sm:w-auto px-8 py-3.5 rounded-lg border border-slate-700 hover:border-orange-500/50 bg-slate-800/50 hover:bg-slate-800 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm group"
-                >
-                    Contact Me 
-                    <FaDownload className="text-sm text-slate-400 group-hover:text-orange-400 transition-colors" />
-                </Link>
+          
+
+<Link 
+  to="/services"
+  className="relative w-full sm:w-auto px-8 py-3.5 rounded-lg border border-slate-700 hover:border-orange-500/50 bg-slate-800/50 hover:bg-slate-800 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm group"
+>
+  Services
+  <FaBriefcase className="text-sm text-slate-400 group-hover:text-orange-400 transition-colors" />
+</Link>
+
             </div>
 
             <div className="flex items-center justify-center md:justify-start gap-8 pt-4 relative z-10">
-               <div className="flex gap-5">
-                  {[FaGithub, FaLinkedinIn, FaFacebookF].map((Icon, i) => (
-                    <a key={i} href="#" className="text-slate-400 hover:text-orange-400 transition-colors text-xl transform hover:scale-110">
-                        <Icon />
-                    </a>
-                  ))}
-               </div>
-               <div className="w-px h-8 bg-slate-700"></div>
+              
+<div className="flex gap-5 items-center">
+    {[FaGithub, FaLinkedinIn, SiFiverr].map((Icon, i) => (
+    <a 
+        key={i} 
+        href="#" 
+        className={`text-slate-400 hover:text-orange-400 transition-colors transform hover:scale-110 ${i === 2 ? 'text-4xl' : 'text-xl'}`}
+    >
+        <Icon />
+    </a>
+    ))}
+</div>
+            <div className="w-px h-8 bg-slate-700"></div>
                <div>
                   <p className="text-2xl font-serif text-white">20+</p>
                   <p className="text-[10px] text-orange-500/80 uppercase tracking-wider mt-0 font-medium">Projects Done</p>

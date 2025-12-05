@@ -9,24 +9,21 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* ========================================= */
-/* গ্লোবাল সেটিংস (Main Fixes) */
-/* ========================================= */
+
 html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  
-  /* 1. সাদা অংশ দূর করার জন্য মেইন কালার */
+ 
   background-color: #020617;
   
-  /* 2. মোবাইলে স্ক্রল বাউন্স বন্ধ করা */
+
   overscroll-behavior-y: none;
   
-  /* 3. ডানে-বামে অনাকাঙ্ক্ষিত স্ক্রল বন্ধ করা */
+
   overflow-x: hidden;
   
-  /* 4. মোবাইলে মাখনের মতো স্মুথ স্ক্রলিং (Lag fix) */
+
   -webkit-overflow-scrolling: touch;
 }
 
@@ -54,17 +51,40 @@ html, body {
   height: 450px;
 }
 
-/* অ্যানিমেশন ফিক্স */
 .ani{
-  animation: auly 3s ease-in-out infinite; /* infinite যোগ করা হয়েছে যাতে ঘুরতে থাকে */
+  animation: auly 3s ease-in-out infinite;
 }
 
 @keyframes auly{
   0% { transform: rotate(0deg); }
-  100%{ transform: rotate(360deg); } /* 'dg' এর বদলে 'deg' ঠিক করা হয়েছে */
+  100%{ transform: rotate(360deg); } 
 }
 #Nahid{
    font-family: 'Great Vibes', cursive;
             letter-spacing: 2px;
             font-style: italic;
+}
+
+
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.animate-spin-slow {
+  animation: spin 12s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mask-image-radial-gradient {
+  -webkit-mask-image: radial-gradient(circle, black 40%, transparent 70%);
+  mask-image: radial-gradient(circle, black 40%, transparent 70%);
 }

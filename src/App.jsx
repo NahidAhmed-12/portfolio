@@ -12,7 +12,7 @@ const GlobalBackground = () => (
       <div className="absolute inset-0 bg-[#020617]"></div>  
       <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] rounded-full bg-orange-600/10 blur-[80px] opacity-50 will-change-transform"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vh] rounded-full bg-red-900/10 blur-[80px] opacity-50 will-change-transform"></div>
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay"></div>
+    
   </div>
 );
 

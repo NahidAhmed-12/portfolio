@@ -260,15 +260,6 @@ const Hero = () => {
         </motion.div>
 
       </div>
-
-      <style jsx>{`
-        .perspective-1000 { perspective: 1000px; }
-        .animate-spin-slow { animation: spin 12s linear infinite; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .mask-image-radial-gradient { -webkit-mask-image: radial-gradient(circle, black 40%, transparent 70%); }
-        .transform-gpu { transform: translate3d(0,0,0); }
-        .will-change-transform { will-change: transform; }
-      `}</style>
     </div>
   );
 };

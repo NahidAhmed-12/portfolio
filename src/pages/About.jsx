@@ -56,14 +56,17 @@ const About = () => {
                 </div>
 
                 <div className="absolute -bottom-6 -right-6 bg-slate-800/90 backdrop-blur-md border border-orange-500/30 p-4 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] z-20 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        2+
+                    <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white shadow-lg">
+                        {/* Used Icon instead of Number */}
+                        <FaCode className="text-lg" />
                     </div>
                     <div>
-                        <p className="text-white font-bold text-sm">Years of</p>
-                        <p className="text-orange-400 text-xs font-bold uppercase tracking-wide">Experience</p>
+                        <p className="text-white font-bold text-sm">Quality</p>
+                        <p className="text-orange-400 text-xs font-bold uppercase tracking-wide">Code</p>
                     </div>
                 </div>
+       
+
             </div>
           </motion.div>
 

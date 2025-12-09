@@ -18,10 +18,6 @@ html, body {
   padding: 0;
  
   background-color: #020617;
-  
-
-  overscroll-behavior-y: none;
-  
 
   overflow-x: hidden;
   

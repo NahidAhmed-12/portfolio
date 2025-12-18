@@ -48,7 +48,7 @@ const About = () => {
             <div className="relative z-10 p-3 bg-slate-900/50 rounded-2xl border border-orange-500/20 backdrop-blur-sm shadow-2xl transform transition-transform duration-500 group-hover:-translate-y-2">
                 <div className="relative overflow-hidden rounded-xl">
                     <img 
-                      src="/Hero/Nahid.avif" 
+                      src="/Hero/Nahid.jpg" 
                       alt="Nahid" 
                       className="w-full max-w-[320px] md:max-w-[360px] object-cover rounded-xl shadow-lg grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
                     />

@@ -296,7 +296,7 @@ const Hero = () => {
                 >
                    
                     <img 
-                        src="/Hero/Nahid.avif" 
+                        src="/Hero/Nahid.jpg" 
                         alt="Nahid" 
                         loading="eager"
                         width={350}

@@ -55,14 +55,14 @@ const Navbar = () => {
     }
   };
 
-  const fiverrLink = "https://www.fiverr.com/your_username"; 
+  const fiverrLink = "https://www.fiverr.com/nahidahmad10"; 
 
   // Custom Font Style Object
   const fontStyle = { fontFamily: "'Outfit', sans-serif" };
 
   return (
     <motion.nav
-      style={fontStyle} // Applying the new font to the whole navbar
+      style={fontStyle} 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}

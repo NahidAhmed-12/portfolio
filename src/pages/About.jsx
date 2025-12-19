@@ -1,13 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaUser, FaCode, FaBriefcase, FaMapMarkerAlt, FaDownload, FaArrowRight } from 'react-icons/fa';
-
+import { FaUser, FaCode, FaBriefcase, FaMapMarkerAlt, FaEye, FaArrowRight, FaRocket, FaLaptopCode, FaHandshake } from 'react-icons/fa';
 
 const About = () => {
   return (
     <section id="about" className="relative py-20 bg-slate-950 overflow-hidden font-sans text-slate-300">
       
-      {/* --- BACKGROUND DECORATION --- */}
+     
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[100px]"></div>
           <div className="absolute bottom-[10%] left-[5%] w-[300px] h-[300px] bg-amber-500/10 rounded-full blur-[80px]"></div>
@@ -16,12 +15,12 @@ const About = () => {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         
-        {/* --- HEADER --- */}
+        
         <motion.div 
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/30 bg-orange-500/5 text-orange-400 text-xs font-bold uppercase tracking-widest mb-4">
              Who I Am
@@ -34,9 +33,9 @@ const About = () => {
           </h2>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+        <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-20">
           
-    
+        
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -50,14 +49,13 @@ const About = () => {
                     <img 
                       src="/Hero/Nahid.jpg" 
                       alt="Nahid" 
-                      className="w-full max-w-[320px] md:max-w-[360px] object-cover rounded-xl shadow-lg grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                      className="w-full max-w-[320px] md:max-w-[360px] object-cover rounded-xl shadow-lg brightness-110 saturate-110 transition-all duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-60"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-10"></div>
                 </div>
 
                 <div className="absolute -bottom-6 -right-6 bg-slate-800/90 backdrop-blur-md border border-orange-500/30 p-4 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] z-20 flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white shadow-lg">
-                        {/* Used Icon instead of Number */}
                         <FaCode className="text-lg" />
                     </div>
                     <div>
@@ -65,18 +63,16 @@ const About = () => {
                         <p className="text-orange-400 text-xs font-bold uppercase tracking-wide">Code</p>
                     </div>
                 </div>
-       
-
             </div>
           </motion.div>
 
-        
+         
           <motion.div 
              initial={{ opacity: 0, x: 50 }}
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 0.6, delay: 0.2 }}
-             className="w-full lg:w-7/12"
+             className="w-full lg:w-7/12 lg:pt-4" 
           >
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
               I'm <span className="text-orange-400">Nahid Hasan</span>, a passionate Developer.
@@ -88,12 +84,10 @@ const About = () => {
               I transform complex requirements into seamless digital experiences, ensuring every project is fast, accessible, and visually stunning.
             </p>
 
-          
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 {[
                     { icon: <FaUser />, label: "Name", value: "Nahid Hasan" },
                     { icon: <FaCode />, label: "Role", value: "Frontend Dev" },
-                   
                     { icon: <FaBriefcase />, label: "Status", value: "Available for Work" }, 
                     { icon: <FaMapMarkerAlt />, label: "Location", value: "Dhaka, BD" },
                 ].map((item, idx) => (
@@ -109,25 +103,65 @@ const About = () => {
                 ))}
             </div>
 
-            {/* Buttons */}
+         
             <div className="flex flex-wrap gap-4">
+              
               <a 
-                href="/cv.pdf" 
-                download 
-                className="relative px-8 py-3.5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2"
+                href="/#projects" 
+                className="cursor-pointer relative px-8 py-3.5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2"
               >
-                Download CV <FaDownload className="text-sm" />
+                View Projects <FaEye className="text-sm" />
               </a>
               
-           
+        
               <a 
-                href="https://www.fiverr.com/your_username" 
+                href="https://www.fiverr.com/nahidahmad10" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-3.5 rounded-lg border border-slate-700 hover:border-orange-500/50 bg-slate-800/50 hover:bg-slate-800 text-white font-medium transition-all duration-300 flex items-center gap-2 backdrop-blur-sm group"
               >
                 Hire Me <FaArrowRight className="-rotate-45 group-hover:rotate-0 transition-transform duration-300 text-orange-400" />
               </a>
+            </div>
+
+           
+            <div className="mt-10 pt-8 border-t border-slate-800/50">
+                <p className="text-slate-400 text-sm mb-6">
+                    <span className="text-orange-400 font-bold">My Approach:</span> As a fresh developer, I bring modern tech knowledge, dedication, and a hunger to learn and solve real-world problems.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    {/* Item 1 */}
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-orange-400 text-lg shadow-sm">
+                            <FaRocket />
+                        </div>
+                        <div>
+                            <h5 className="text-white font-bold text-sm">Fast Learner</h5>
+                            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Adapting New Tech</p>
+                        </div>
+                    </div>
+                    {/* Item 2 */}
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-orange-400 text-lg shadow-sm">
+                            <FaLaptopCode />
+                        </div>
+                        <div>
+                            <h5 className="text-white font-bold text-sm">Clean Code</h5>
+                            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Modern Standards</p>
+                        </div>
+                    </div>
+                    {/* Item 3 */}
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-orange-400 text-lg shadow-sm">
+                            <FaHandshake />
+                        </div>
+                        <div>
+                            <h5 className="text-white font-bold text-sm">Dedicated</h5>
+                            <p className="text-[10px] text-slate-500 uppercase tracking-wide">Client Focused</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
           </motion.div>

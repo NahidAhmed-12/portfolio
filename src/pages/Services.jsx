@@ -6,7 +6,7 @@ import { SiNextdotjs, SiFigma, SiTailwindcss } from 'react-icons/si';
 const Services = () => {
   
  
-  const fiverrProfile = "https://www.fiverr.com/your_username";
+  const fiverrProfile = "https://www.fiverr.com/nahidahmad10";
 
   const servicesData = [
     {

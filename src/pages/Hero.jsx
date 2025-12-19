@@ -61,7 +61,8 @@ const SlideshowCard = memo(() => {
   return (
     <div className="absolute bottom-5 left-5 right-5 z-20">
         <motion.div 
-            className="bg-slate-900/95 md:bg-slate-900/85 md:backdrop-blur-md border border-orange-500/20 p-4 rounded-xl shadow-lg overflow-hidden transform-gpu"
+          
+            className="bg-slate-900/30 backdrop-blur-md border border-white/10 p-4 rounded-xl shadow-lg overflow-hidden transform-gpu"
         >
             <AnimatePresence mode="wait">
             <motion.div 
@@ -72,19 +73,20 @@ const SlideshowCard = memo(() => {
                 transition={{ duration: 0.4 }}
                 className="flex items-center gap-4"
             >
-                <div className="w-10 h-10 rounded-lg bg-orange-500 flex items-center justify-center text-white text-xl shadow-lg shrink-0">
+              
+                <div className="w-10 h-10 rounded-lg bg-orange-500/90 flex items-center justify-center text-white text-xl shadow-lg shrink-0">
                     {techSlides[currentSlide].icon}
                 </div>
                 <div>
-                    <h4 className="text-white font-bold text-sm">{techSlides[currentSlide].name}</h4>
-                    <p className="text-orange-400 text-[10px] uppercase font-bold tracking-wide">{techSlides[currentSlide].label}</p>
+                    <h4 className="text-white font-bold text-sm drop-shadow-md">{techSlides[currentSlide].name}</h4>
+                    <p className="text-orange-300 text-[10px] uppercase font-bold tracking-wide">{techSlides[currentSlide].label}</p>
                 </div>
             </motion.div>
             </AnimatePresence>
             
             <div className="flex gap-1 mt-3 justify-start">
                 {techSlides.map((_, idx) => (
-                    <div key={idx} className={`h-1 rounded-full transition-all duration-300 ${idx === currentSlide ? 'w-6 bg-orange-500' : 'w-1.5 bg-slate-600'}`}></div>
+                    <div key={idx} className={`h-1 rounded-full transition-all duration-300 ${idx === currentSlide ? 'w-6 bg-orange-500' : 'w-1.5 bg-slate-400/50'}`}></div>
                 ))}
             </div>
         </motion.div>
@@ -280,8 +282,23 @@ const Hero = () => {
                  <div className="absolute inset-0 bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:20px_20px] opacity-20 mask-image-radial-gradient"></div>
              </div>
 
-             <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-6 right-10 z-40 text-orange-400 bg-slate-900 p-3 rounded-xl border border-orange-500/30 shadow-xl will-change-transform"><FaReact className="text-3xl animate-spin-slow"/></motion.div>
-             <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 -left-6 z-40 text-amber-400 bg-slate-900 p-3 rounded-xl border border-amber-500/30 shadow-xl will-change-transform"><SiRedux className="text-3xl"/></motion.div>
+            
+             <motion.div 
+                animate={{ y: [0, -10, 0] }} 
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} 
+                className="absolute -top-6 right-10 z-40 text-orange-400 bg-slate-900/30 backdrop-blur-md p-3 rounded-xl border border-white/10 shadow-xl will-change-transform"
+             >
+                <FaReact className="text-3xl animate-spin-slow"/>
+             </motion.div>
+
+   
+             <motion.div 
+                animate={{ y: [0, 10, 0] }} 
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} 
+                className="absolute bottom-16 -left-6 z-40 text-amber-400 bg-slate-900/30 backdrop-blur-md p-3 rounded-xl border border-white/10 shadow-xl will-change-transform"
+             >
+                <SiRedux className="text-3xl"/>
+             </motion.div>
 
              <motion.div 
                 animate={{ y: [0, -20, 0] }}
@@ -295,6 +312,7 @@ const Hero = () => {
                     style={{ transform: !isMobile ? "translateZ(30px)" : "none" }}
                 >
                    
+                  
                     <img 
                         src="/Hero/Nahid.jpg" 
                         alt="Nahid" 
@@ -302,12 +320,9 @@ const Hero = () => {
                         width={350}
                         height={480}
                         className="w-full h-full object-cover object-top 
-                                   opacity-90 group-hover:opacity-100 
-                                   grayscale-0
-                                   brightness-[1.15] contrast-[1.1] saturate-[1.1] 
-                                   md:brightness-100 md:contrast-100 md:saturate-100
-                                   group-hover:brightness-105
-                                   transition-all duration-500 will-change-transform" 
+                                   brightness-110 contrast-110 saturate-125
+                                   group-hover:scale-110 
+                                   transition-transform duration-700 ease-in-out" 
                     />
                     
                     <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90"></div>

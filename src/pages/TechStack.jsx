@@ -77,7 +77,7 @@ function TechStack() {
 
                         <div className='flex justify-center md:justify-start'>
                              <a 
-                                href="/contact" 
+                                href="https://www.fiverr.com/nahidahmad10" target='blank'
                                 className="relative group inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-slate-800 to-slate-900 border border-white/10 text-white font-semibold transition-all duration-300 hover:border-orange-500/50 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)] overflow-hidden"
                              >
                                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-500/10 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
